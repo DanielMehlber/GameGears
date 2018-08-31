@@ -1,0 +1,10 @@
+#version 420 core
+
+in vec3 out_color;
+in vec2 vertex_tex_coord;
+
+uniform sampler2D diffuse_texture;
+
+void main(){
+	gl_FragColor = texture2D(diffuse_texture, vertex_tex_coord);
+}

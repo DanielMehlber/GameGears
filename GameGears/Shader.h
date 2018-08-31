@@ -4,7 +4,9 @@
 #include "Console.h"
 #include <iostream>
 #include <fstream>
-class Shader
+#include "OGLObject.h"
+
+class Shader : public OGLObject
 {
 public:
 	enum TYPES {
@@ -21,7 +23,7 @@ public:
 	Shader(const char* src, TYPES type);
 	~Shader();
 	static Shader* loadShader(TYPES type ,const char* location);
-	unsigned int id;
+	
 	TYPES type;
 	STATUS status;
 

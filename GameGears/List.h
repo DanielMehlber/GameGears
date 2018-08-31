@@ -7,7 +7,7 @@ template<typename type> class List
 {
 public:
 	List();
-	List(type* arr);
+	List(type arr[], int size);
 	List(glm::vec3 vector);
 	~List();
 	void append(type obj);

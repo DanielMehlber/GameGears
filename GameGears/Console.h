@@ -3,6 +3,8 @@
 #include <string>
 #include "GLEW/glew.h"
 
+
+
 #define ASSERT(x) if(!(x)) __debugbreak();
 #ifdef _DEBUG
 #define GLCall(x) Console::clear_gl_error();\

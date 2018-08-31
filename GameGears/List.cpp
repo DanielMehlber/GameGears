@@ -8,10 +8,10 @@ inline List<type>::List()
 }
 
 template<typename type>
-List<type>::List(type * arr)
+List<type>::List(type arr[], int size)
 {
-	for (type t : arr) {
-		append(t);
+	for (int i = 0; i < size; i++) {
+		data.push_back(arr[i]);
 	}
 }
 

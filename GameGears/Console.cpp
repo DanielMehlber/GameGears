@@ -35,7 +35,30 @@ void Console::leave()
 bool Console::check_gl_errors()
 {
 	while (GLenum error = glGetError()) {
-		std::cerr << "OPENGL-ERROR: " << error << std::endl;
+
+		const char* error_txt;
+
+		switch (error)
+		{
+		case GL_INVALID_ENUM: {
+			error_txt = "Invalid Enum";
+			break;
+		}
+		case GL_INVALID_OPERATION: {
+			error_txt = "Invalid Operation";
+			break;
+		}
+		case GL_INVALID_VALUE: {
+			error_txt = "Invalid Value";
+			break;
+		}
+		default:
+			error_txt = "-/";
+			break;
+		}
+
+		//const unsigned char* err = gluErrorString(error);
+		std::cerr << "OPENGL-ERROR: (Code " << error <<"): "<< error_txt << std::endl;
 		return false;
 	}
 	return true;
@@ -43,6 +66,6 @@ bool Console::check_gl_errors()
 
 void Console::clear_gl_error()
 {
-	while (GLenum error = glGetError());
+	while (GL_NO_ERROR != glGetError());
 }
 
