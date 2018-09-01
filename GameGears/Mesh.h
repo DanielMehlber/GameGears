@@ -10,6 +10,8 @@
 class Mesh : public Renderable, public OGLObject
 {
 public:
+	ShaderPack* default_shaders;
+
 	Mesh();
 	~Mesh();
 	void render() override;
@@ -17,23 +19,20 @@ public:
 	List<unsigned int> indices;
 	void pack(Renderable::usage hint);
 	void pack();
-	ShaderPack* shaders;
-	ShaderPack* default_shaders;
-
-	enum vertex_buffers {
-		POSITIONS,
-		INDICES,
-		TEX_COORDS,
-		BUFFER_COUNT
-	};
-
-
-	unsigned int* vbos;
-
-	//
-	Texture* diffuseTexture;
+	void setTexture(Texture* tex);
+	void setShaderPack(ShaderPack* pack);
 
 private:
+	ShaderPack* shaderPack;
+	unsigned int* vbos;
+	enum buffers {
+		POSITIONS,
+		TEX_COORDS,
+		INDICES,
+		BUFFER_COUNT
+	};
+	Texture* texture;
+
 	List<float> v_positions;
 	List<float> v_tex_coords;
 };

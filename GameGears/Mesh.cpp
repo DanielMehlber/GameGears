@@ -2,6 +2,7 @@
 
 //TODO: index buffer: unsigned char* < unsigned short* < unsigned int*: indices size adaption (depends on vertex_count) 
 
+
 Mesh::Mesh()
 {
 	//Init Lists
@@ -9,7 +10,7 @@ Mesh::Mesh()
 	v_positions = List<float>();
 	v_tex_coords = List<float>();
 	indices = List<unsigned int>();
-	vbos = new unsigned int[vertex_buffers::BUFFER_COUNT];
+	vbos = new unsigned int[buffers::BUFFER_COUNT];
 
 	//Default shader
 	/*
@@ -22,38 +23,39 @@ Mesh::Mesh()
 	shaders = default_shaders;
 	*/
 	GLCall(glGenVertexArrays(1, &id));
-	GLCall(glGenBuffers(vertex_buffers::BUFFER_COUNT, vbos));
+	GLCall(glGenBuffers(buffers::BUFFER_COUNT, vbos));
 }
 
 
 Mesh::~Mesh()
 {
 	GLCall(glDeleteVertexArrays(1, &id));
-	GLCall(glDeleteBuffers(vertex_buffers::BUFFER_COUNT, vbos));
-	GLCall(glDisableVertexAttribArray(vertex_buffers::POSITIONS));
-	GLCall(glDisableVertexAttribArray(vertex_buffers::TEX_COORDS));
-	GLCall(glDisableVertexAttribArray(vertex_buffers::INDICES));
+	GLCall(glDeleteBuffers(buffers::BUFFER_COUNT, vbos));
+	GLCall(glDisableVertexAttribArray(buffers::POSITIONS));
+	GLCall(glDisableVertexAttribArray(buffers::TEX_COORDS));
+	GLCall(glDisableVertexAttribArray(buffers::INDICES));
 }
 
 void Mesh::render() {
-	if (shaders == nullptr)
-		shaders = default_shaders;
-	shaders->use();
-	if (diffuseTexture) {
-		diffuseTexture->use(0);
-	}
-	GLCall(glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, vbos[vertex_buffers::INDICES]))
-	GLCall(glBindVertexArray(id));
-	GLCall(glDrawElements(GL_TRIANGLES, indices.size(), GL_UNSIGNED_INT, 0));	
+	if (texture != nullptr)
+		texture->use(0);
+	if (shaderPack == nullptr)
+		shaderPack = default_shaders;
 
-	GLCall(glUseProgram(0));
-	GLCall(glBindTexture(GL_TEXTURE_2D, 0));
-	GLCall(glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0));
-	GLCall(glBindVertexArray(0));
+	glBindVertexArray(id);
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, vbos[buffers::INDICES]);
+	shaderPack->start();
+	
+	glDrawElements(GL_TRIANGLES, indices.size(), GL_UNSIGNED_INT, 0);
+	
+	shaderPack->stop();
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
+	glBindVertexArray(0);
 }
 
 void Mesh::pack(Renderable::usage hint)
 {
+	//Determin DRAW_TYPE based on hint
 	GLuint draw_type;
 	switch (hint)
 	{
@@ -70,6 +72,7 @@ void Mesh::pack(Renderable::usage hint)
 		break;
 	}
 
+	//Convert the Vertex Array format to the Buffer Array format
 	v_positions.clear();
 	v_tex_coords.clear();
 	for (Vertex* vertex : *vertices.getData()) {
@@ -101,32 +104,49 @@ void Mesh::pack(Renderable::usage hint)
 	v_positions = List<float>(pos, 12);
 	v_tex_coords = List<float>(t_c, 8);
 	indices = List<unsigned int>(ind, 6);
+	
+	
+	//PREPS MESH DATA
+	glBindVertexArray(id);
 
-	GLCall(glBindVertexArray(id));
-
-	GLCall(glBindBuffer(GL_ARRAY_BUFFER, vbos[vertex_buffers::POSITIONS]));
-	GLCall(glBufferData(GL_ARRAY_BUFFER, sizeof(float) * v_positions.size(), v_positions.toArray(), draw_type)); 
-	GLCall(glVertexAttribPointer(vertex_buffers::POSITIONS, 3, GL_FLOAT, GL_FALSE, 0, (void*)0));
-	GLCall(glEnableVertexAttribArray(vertex_buffers::POSITIONS));
-
-	GLCall(glBindBuffer(GL_ARRAY_BUFFER, vbos[vertex_buffers::TEX_COORDS]));
-	GLCall(glBufferData(GL_ARRAY_BUFFER, sizeof(float) * 8, v_tex_coords.toArray(), draw_type));
-	GLCall(glVertexAttribPointer(vertex_buffers::TEX_COORDS, 2, GL_FLOAT, GL_FALSE, 0, (void*)0));
-	GLCall(glEnableVertexAttribArray(vertex_buffers::TEX_COORDS));
-
-	GLCall(glBindVertexArray(0));
-
-	GLCall(glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, vbos[vertex_buffers::INDICES]));
-	GLCall(glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(unsigned int) * indices.size(), indices.toArray(), draw_type));
-
-	GLCall(glBindBuffer(GL_ARRAY_BUFFER, 0));
-	GLCall(glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0));
+	v_positions = List<float>(pos, 12);
+	glBindBuffer(GL_ARRAY_BUFFER, vbos[buffers::POSITIONS]);
+	glBufferData(GL_ARRAY_BUFFER, sizeof(float) * v_positions.size(), v_positions.toArray(), draw_type);
+	glVertexAttribPointer(buffers::POSITIONS, 3, GL_FLOAT, GL_FALSE, 0, 0);
+	glEnableVertexAttribArray(buffers::POSITIONS);
+	glBindBuffer(GL_ARRAY_BUFFER, 0);
 	
 
+	v_tex_coords = List<float>(t_c, 8);
+	glBindBuffer(GL_ARRAY_BUFFER, vbos[buffers::TEX_COORDS]);
+	glBufferData(GL_ARRAY_BUFFER, v_tex_coords.size() * sizeof(float), v_tex_coords.toArray(), draw_type);
+	glVertexAttribPointer(buffers::TEX_COORDS, 2, GL_FLOAT, GL_FALSE, 0, (void*)0);
+	glEnableVertexAttribArray(buffers::TEX_COORDS);
+	glBindBuffer(GL_ARRAY_BUFFER, 0);
+	
+
+	indices = List<unsigned int>(ind, 6);
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, vbos[buffers::INDICES]);
+	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(unsigned int) * indices.size(), indices.toArray(), draw_type);
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
+	
+
+	glBindVertexArray(0);
+	
 }
 
 void Mesh::pack()
 {
 	pack(STATIC_DRAW);
+}
+
+void Mesh::setTexture(Texture * tex)
+{
+	Mesh::texture = tex;
+}
+
+void Mesh::setShaderPack(ShaderPack * pack)
+{
+	Mesh::shaderPack = pack;
 }
 

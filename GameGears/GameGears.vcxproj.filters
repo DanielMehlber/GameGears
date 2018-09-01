@@ -75,6 +75,12 @@
     <ClInclude Include="OGLObject.h">
       <Filter>Header Files\data</Filter>
     </ClInclude>
+    <ClInclude Include="ShaderAttrib.h">
+      <Filter>Header Files\data</Filter>
+    </ClInclude>
+    <ClInclude Include="ShaderUniform.h">
+      <Filter>Header Files\data</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Application.cpp">
@@ -132,6 +138,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="OGLObject.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ShaderAttrib.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ShaderUniform.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

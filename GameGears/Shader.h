@@ -19,13 +19,14 @@ public:
 		OK = 0,
 		COMPILATION_FAILED = 1
 	};
+	
+	TYPES type;
+	STATUS status;
+
 
 	Shader(const char* src, TYPES type);
 	~Shader();
 	static Shader* loadShader(TYPES type ,const char* location);
-	
-	TYPES type;
-	STATUS status;
 
 private:
 	void init(TYPES type);
