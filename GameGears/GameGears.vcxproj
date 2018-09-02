@@ -133,37 +133,42 @@
   <ItemGroup>
     <ClInclude Include="Application.h" />
     <ClInclude Include="Canvas.h" />
+    <ClInclude Include="Component.h" />
     <ClInclude Include="Console.h" />
+    <ClInclude Include="GameObject.h" />
     <ClInclude Include="Image.h" />
     <ClInclude Include="List.h" />
-    <ClInclude Include="Mesh.h" />
+    <ClInclude Include="MeshComponent.h" />
     <ClInclude Include="OGLObject.h" />
     <ClInclude Include="Renderable.h" />
     <ClInclude Include="RenderComponent.h" />
     <ClInclude Include="Shader.h" />
     <ClInclude Include="ShaderAttrib.h" />
-    <ClInclude Include="ShaderPack.h" />
+    <ClInclude Include="ShaderComponent.h" />
     <ClInclude Include="ShaderUniform.h" />
     <ClInclude Include="Synchronizer.h" />
     <ClInclude Include="SyncTask.h" />
     <ClInclude Include="Task.h" />
     <ClInclude Include="TaskManager.h" />
     <ClInclude Include="Texture.h" />
+    <ClInclude Include="TextureComponent.h" />
     <ClInclude Include="Vertex.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Application.cpp" />
     <ClCompile Include="Canvas.cpp" />
+    <ClCompile Include="Component.cpp" />
     <ClCompile Include="Console.cpp" />
+    <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="Image.cpp" />
     <ClCompile Include="List.cpp" />
-    <ClCompile Include="Mesh.cpp" />
+    <ClCompile Include="MeshComponent.cpp" />
     <ClCompile Include="OGLObject.cpp" />
     <ClCompile Include="Renderable.cpp" />
     <ClCompile Include="RenderComponent.cpp" />
     <ClCompile Include="Shader.cpp" />
     <ClCompile Include="ShaderAttrib.cpp" />
-    <ClCompile Include="ShaderPack.cpp" />
+    <ClCompile Include="ShaderComponent.cpp" />
     <ClCompile Include="ShaderUniform.cpp" />
     <ClCompile Include="stb_image.cpp" />
     <ClCompile Include="Synchronizer.cpp" />
@@ -172,6 +177,7 @@
     <ClCompile Include="TaskManager.cpp" />
     <ClCompile Include="Tester.cpp" />
     <ClCompile Include="Texture.cpp" />
+    <ClCompile Include="TextureComponent.cpp" />
     <ClCompile Include="Vertex.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

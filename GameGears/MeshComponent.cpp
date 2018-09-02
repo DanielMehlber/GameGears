@@ -1,9 +1,9 @@
-#include "Mesh.h"
+#include "MeshComponent.h"
 
 //TODO: index buffer: unsigned char* < unsigned short* < unsigned int*: indices size adaption (depends on vertex_count) 
 
 
-Mesh::Mesh()
+MeshComponent::MeshComponent()
 {
 	//Init Lists
 	vertices = List<Vertex*>();
@@ -12,22 +12,13 @@ Mesh::Mesh()
 	indices = List<unsigned int>();
 	vbos = new unsigned int[buffers::BUFFER_COUNT];
 
-	//Default shader
-	/*
-	Shader* default_vs = Shader::loadShader(Shader::VERTEX_SHADER, "./res/default_vs.txt");
-	Shader* default_fs = Shader::loadShader(Shader::FRAGMENT_SHADER, "./res/default_fs.txt");
-	default_shaders = new ShaderPack();
-	default_shaders->setVertexShader(default_vs);
-	default_shaders->setFragmentShader(default_fs);
-	default_shaders->pack();
-	shaders = default_shaders;
-	*/
+	
 	GLCall(glGenVertexArrays(1, &id));
 	GLCall(glGenBuffers(buffers::BUFFER_COUNT, vbos));
 }
 
 
-Mesh::~Mesh()
+MeshComponent::~MeshComponent()
 {
 	GLCall(glDeleteVertexArrays(1, &id));
 	GLCall(glDeleteBuffers(buffers::BUFFER_COUNT, vbos));
@@ -36,24 +27,18 @@ Mesh::~Mesh()
 	GLCall(glDisableVertexAttribArray(buffers::INDICES));
 }
 
-void Mesh::render() {
-	if (texture != nullptr)
-		texture->use(0);
-	if (shaderPack == nullptr)
-		shaderPack = default_shaders;
-
+void MeshComponent::render() {
+	
 	glBindVertexArray(id);
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, vbos[buffers::INDICES]);
-	shaderPack->start();
 	
 	glDrawElements(GL_TRIANGLES, indices.size(), GL_UNSIGNED_INT, 0);
 	
-	shaderPack->stop();
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
 	glBindVertexArray(0);
 }
 
-void Mesh::pack(Renderable::usage hint)
+void MeshComponent::pack(Renderable::usage hint)
 {
 	//Determin DRAW_TYPE based on hint
 	GLuint draw_type;
@@ -135,18 +120,8 @@ void Mesh::pack(Renderable::usage hint)
 	
 }
 
-void Mesh::pack()
+void MeshComponent::pack()
 {
 	pack(STATIC_DRAW);
-}
-
-void Mesh::setTexture(Texture * tex)
-{
-	Mesh::texture = tex;
-}
-
-void Mesh::setShaderPack(ShaderPack * pack)
-{
-	Mesh::shaderPack = pack;
 }
 

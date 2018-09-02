@@ -18,9 +18,12 @@ public:
 	~Texture();
 	static Texture* loadTexture(const char* location);
 	void setImage(Image* img);
-	void use(int slot);
+
+	void activate(int slot);
+	void deactivate();
 
 private:
 	Image* img;
+	unsigned int slot;
 };
 

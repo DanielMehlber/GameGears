@@ -1,19 +1,19 @@
-#include "ShaderPack.h"
+#include "ShaderComponent.h"
 
 
-ShaderPack::ShaderPack()
+ShaderComponent::ShaderComponent()
 {
 	id = glCreateProgram();
 
 }
 
-ShaderPack::ShaderPack(Shader * vertex, Shader * fragment) : ShaderPack()
+ShaderComponent::ShaderComponent(Shader * vertex, Shader * fragment) : ShaderComponent()
 {
 	setVertexShader(vertex);
 	setFragmentShader(fragment);
 }
 
-ShaderPack::ShaderPack(Shader * vertex, Shader * fragment, Shader * geometry) : ShaderPack()
+ShaderComponent::ShaderComponent(Shader * vertex, Shader * fragment, Shader * geometry) : ShaderComponent()
 {
 	setVertexShader(vertex); 
 	setFragmentShader(fragment); 
@@ -21,7 +21,7 @@ ShaderPack::ShaderPack(Shader * vertex, Shader * fragment, Shader * geometry) : 
 }
 
 
-ShaderPack::~ShaderPack()
+ShaderComponent::~ShaderComponent()
 {
 	glDeleteProgram(id);
 	if (vertexShader != nullptr) {
@@ -38,7 +38,7 @@ ShaderPack::~ShaderPack()
 	}
 }
 
-void ShaderPack::setVertexShader(Shader * shader)
+void ShaderComponent::setVertexShader(Shader * shader)
 {
 	checkShader(shader);
 
@@ -51,7 +51,7 @@ void ShaderPack::setVertexShader(Shader * shader)
 	attachShader(shader);
 }
 
-void ShaderPack::setFragmentShader(Shader * shader)
+void ShaderComponent::setFragmentShader(Shader * shader)
 {
 	checkShader(shader);
 
@@ -64,7 +64,7 @@ void ShaderPack::setFragmentShader(Shader * shader)
 	attachShader(shader);
 }
 
-void ShaderPack::setGeometryShader(Shader * shader)
+void ShaderComponent::setGeometryShader(Shader * shader)
 {
 	checkShader(shader);
 
@@ -77,7 +77,7 @@ void ShaderPack::setGeometryShader(Shader * shader)
 	attachShader(shader);
 }
 
-Shader * ShaderPack::getShader(Shader::TYPES type)
+Shader * ShaderComponent::getShader(Shader::TYPES type)
 {
 	switch (type)
 	{
@@ -96,7 +96,7 @@ Shader * ShaderPack::getShader(Shader::TYPES type)
 	}
 }
 
-void ShaderPack::pack()
+void ShaderComponent::pack()
 {
 	glLinkProgram(id);
 	int success;
@@ -114,27 +114,40 @@ void ShaderPack::pack()
 	//Define Uniform Variables here
 }
 
-void ShaderPack::start()
+void ShaderComponent::activate()
 {
 	glUseProgram(id);
 }
 
-void ShaderPack::stop()
+void ShaderComponent::deactivate()
 {
 	glUseProgram(0);
 }
 
-void ShaderPack::attribute(int index, const char * name)
+void ShaderComponent::attribute(int index, const char * name)
 {
 	glBindAttribLocation(id, index, name);
 }
 
-void ShaderPack::attachShader(Shader * shader)
+
+ShaderComponent * ShaderComponent::genDefaultShader()
+{
+	const char* default_vertex_loc = "./res/default_vs.txt";
+	const char* default_fragment_loc = "./res/default_fs.txt";
+
+	Shader* default_vertex_shader = Shader::loadShader(Shader::VERTEX_SHADER, default_vertex_loc);
+	Shader* default_fragment_shader = Shader::loadShader(Shader::FRAGMENT_SHADER, default_fragment_loc);
+
+	ShaderComponent* defaultShader = new ShaderComponent(default_vertex_shader, default_fragment_shader);
+	return defaultShader;
+}
+
+void ShaderComponent::attachShader(Shader * shader)
 {
 	glAttachShader(id, shader->id);
 }
 
-void ShaderPack::checkShader(Shader * shader)
+void ShaderComponent::checkShader(Shader * shader)
 {
 	if (shader == nullptr) {
 		Console::err("INVALID_SHADER", "Shader is nullptr in ShaderPack: "+id);

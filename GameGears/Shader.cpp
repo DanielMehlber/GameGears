@@ -37,6 +37,7 @@ Shader* Shader::loadShader(TYPES type, const char * location)
 	return new Shader(txt.c_str(), type);
 }
 
+
 void Shader::init(TYPES type)
 {
 	Shader::type = type;
@@ -58,7 +59,7 @@ void Shader::init(TYPES type)
 		break;
 	}
 
-	id = glCreateShader(gl_type);
+	GLCall(id = glCreateShader(gl_type));
 
 
 

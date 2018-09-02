@@ -34,8 +34,8 @@ int ShaderUniform<type>::getLocation()
 {
 	location = glGetUniformLocation(programID, name);
 	if (location == -1) {
-		std::string message = std::string("This is just a warning: The Uniformvariable ")+std::string(name)+std::string(" cannot be found.")
-		Console::err("UNIFORM_VAR_WARNING", "This is just a warning: The Uniformvariable")
+		std::string message = std::string("This is just a warning: The Uniformvariable ") + std::string(name) + std::string(" cannot be found.");
+		Console::err("UNIFORM_VAR_WARNING", message);
 	}
 	
 }
