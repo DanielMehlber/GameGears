@@ -66,6 +66,6 @@ bool Console::check_gl_errors()
 
 void Console::clear_gl_error()
 {
-	//while (GL_NO_ERROR != glGetError());
+	while (GL_NO_ERROR != glGetError());
 }
 

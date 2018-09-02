@@ -68,7 +68,7 @@ void ShaderComponent::setGeometryShader(Shader * shader)
 {
 	checkShader(shader);
 
-	if (!shader->type == Shader::GEOMETRY_SHADER) {
+	if (shader->type != Shader::GEOMETRY_SHADER) {
 		Console::err("WRONG_SHADER_TYPE", "The parameter shader is no GEOMETRY_SHADER");
 		Console::leave();
 	}

@@ -8,7 +8,11 @@
 
 
 
+
 int main() {
+
+	List<GameObject*> ints = List<GameObject*>();
+	ints.size();
 
 	Application app = Application();
 
@@ -28,9 +32,9 @@ int main() {
 
 	GameObject* object = new GameObject();
 
-	object->setMeshComponent(mesh);
-	object->setShaderComponent(shaderCmp);
-	object->setTextureComponent(textureCmp);
+	object->setComponent<MeshComponent>(mesh);
+	object->setComponent<ShaderComponent>(shaderCmp);
+	object->setComponent<TextureComponent>(textureCmp);
 
 	app.renderer->register_object(object);
 	app.start();

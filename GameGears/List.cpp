@@ -66,7 +66,6 @@ template<typename type>
 void List<type>::remove(type obj)
 {
 	remove_at(find(obj));
-
 }
 
 template<typename type>

@@ -30,7 +30,7 @@ int Task::fire()
 	try {
 		return_value = Task::action(this);
 	}
-	catch (std::bad_function_call &e) {
+	catch (std::bad_function_call) {
 		std::string message = "The function of Task '" + getName() + "' cannot be called. Reason:\n";
 		if (action == nullptr) {
 			message += "functionpointer is a nullptr, no function defined.\n";

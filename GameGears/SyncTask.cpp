@@ -19,7 +19,7 @@ int SyncTask::fire()
 		try {
 			return_value = Task::action(this);
 		}
-		catch (std::bad_function_call &e) {
+		catch (std::bad_function_call) {
 			std::string message = "The Function of Task '" + getName() + "' cannot be called. Reason:\n";
 			if (Task::action == nullptr) {
 				message += "The functionpointer is a nullptr, no function defined.\n";

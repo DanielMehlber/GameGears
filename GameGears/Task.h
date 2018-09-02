@@ -19,7 +19,7 @@ public:
 private:
 	std::string name;
 	unsigned int frame_offset;
-	int frames_passed = 0;
+	unsigned int frames_passed = 0;
 	bool paused = false;
 
 };

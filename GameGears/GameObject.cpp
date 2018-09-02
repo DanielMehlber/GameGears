@@ -1,3 +1,5 @@
+#pragma once
+#include "Component.h"
 #include "GameObject.h"
 
 
@@ -26,18 +28,5 @@ void GameObject::render()
 		textureCmp->deactivate();
 }
 
-void GameObject::setShaderComponent(ShaderComponent * cmp)
-{
-	shaderCmp = cmp;
-}
 
-void GameObject::setMeshComponent(MeshComponent * cmp)
-{
-	meshCmp = cmp;
-}
-
-void GameObject::setTextureComponent(TextureComponent * cmp)
-{
-	textureCmp = cmp;
-}
 
