@@ -7,10 +7,15 @@ class GameObject;
 class Component
 {
 public:
-	Component();
-	~Component();
+	enum tags {
+		RENDER_RELEVANT
+	};
 
+	Component(tags tag);
+	virtual ~Component();
 	List<GameObject*> users;
+	tags tag;
+	
 private:
 	 
 };

@@ -29,12 +29,13 @@ int main() {
 
 	MeshComponent* mesh = new MeshComponent();
 	mesh->pack();
+	std::cout << mesh->id << std::endl;
 
 	GameObject* object = new GameObject();
 
-	object->setComponent<MeshComponent>(mesh);
-	object->setComponent<ShaderComponent>(shaderCmp);
-	object->setComponent<TextureComponent>(textureCmp);
+	object->set<MeshComponent>(mesh);
+	object->set<TextureComponent>(textureCmp);
+	object->set<ShaderComponent>(shaderCmp);
 
 	app.renderer->register_object(object);
 	app.start();

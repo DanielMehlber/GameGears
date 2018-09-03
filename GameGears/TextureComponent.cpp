@@ -2,7 +2,7 @@
 
 
 
-TextureComponent::TextureComponent()
+TextureComponent::TextureComponent() : Component(Component::tags::RENDER_RELEVANT)
 {
 }
 

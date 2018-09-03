@@ -43,7 +43,7 @@ void Texture::setImage(Image * img)
 void Texture::activate(int slot)
 {
 	GLCall(glBindTexture(GL_TEXTURE_2D, id));
-	//GLCall(glActiveTexture(GL_TEXTURE0 + slot));
+	GLCall(glActiveTexture(GL_TEXTURE0 + slot));
 	Texture::slot = slot;
 }
 

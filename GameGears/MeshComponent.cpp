@@ -3,7 +3,7 @@
 //TODO: index buffer: unsigned char* < unsigned short* < unsigned int*: indices size adaption (depends on vertex_count) 
 
 
-MeshComponent::MeshComponent()
+MeshComponent::MeshComponent() : Component(Component::tags::RENDER_RELEVANT)
 {
 	//Init Lists
 	vertices = List<Vertex*>();
@@ -29,11 +29,19 @@ MeshComponent::~MeshComponent()
 
 void MeshComponent::render() {
 	
-	glBindVertexArray(id);
-	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, vbos[buffers::INDICES]);
-	
+	//Dont forget to activate !
 	glDrawElements(GL_TRIANGLES, indices.size(), GL_UNSIGNED_INT, 0);
 	
+}
+
+void MeshComponent::activate()
+{
+	glBindVertexArray(id);
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, vbos[buffers::INDICES]);
+}
+
+void MeshComponent::deactivate()
+{
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
 	glBindVertexArray(0);
 }

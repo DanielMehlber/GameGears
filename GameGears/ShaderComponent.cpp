@@ -1,7 +1,7 @@
 #include "ShaderComponent.h"
 
 
-ShaderComponent::ShaderComponent()
+ShaderComponent::ShaderComponent() : Component(Component::tags::RENDER_RELEVANT)
 {
 	id = glCreateProgram();
 

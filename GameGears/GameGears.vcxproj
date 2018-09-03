@@ -134,6 +134,7 @@
     <ClInclude Include="Application.h" />
     <ClInclude Include="Canvas.h" />
     <ClInclude Include="Component.h" />
+    <ClInclude Include="ComponentStack.h" />
     <ClInclude Include="Console.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="Image.h" />
@@ -158,6 +159,7 @@
     <ClCompile Include="Application.cpp" />
     <ClCompile Include="Canvas.cpp" />
     <ClCompile Include="Component.cpp" />
+    <ClCompile Include="ComponentStack.cpp" />
     <ClCompile Include="Console.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="Image.cpp" />

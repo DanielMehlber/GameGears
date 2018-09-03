@@ -10,5 +10,7 @@ public:
 		DYNAMIC_DRAW,
 		STREAM_DRAW
 	};
+	bool rendered = false;
+	void reset();
 };
 
