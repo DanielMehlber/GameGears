@@ -14,8 +14,8 @@ public:
 	MeshComponent();
 	~MeshComponent();
 	void render() override;
-	void activate();
-	void deactivate();
+	void activate() override;
+	void deactivate() override;
 	List<Vertex*> vertices;
 	List<unsigned int> indices;
 	void pack(Renderable::usage hint);

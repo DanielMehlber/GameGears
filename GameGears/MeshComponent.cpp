@@ -38,12 +38,14 @@ void MeshComponent::activate()
 {
 	glBindVertexArray(id);
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, vbos[buffers::INDICES]);
+	active = true;
 }
 
 void MeshComponent::deactivate()
 {
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
 	glBindVertexArray(0);
+	active = false;
 }
 
 void MeshComponent::pack(Renderable::usage hint)

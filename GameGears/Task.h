@@ -1,13 +1,16 @@
 #pragma once
 #include <functional>
 #include "Console.h"
+
+class SyncTask;
+
 class Task
 {
 public:
 	const static int CONTINUE = 0;
 	const static int TERMINATE = -1;
-	Task(std::string name, std::function<int(Task*)> action, unsigned int frame_offset);
-	Task(std::string name, std::function<int(Task*)> action);
+	Task(std::string name, std::function<int(Task*)>* action, unsigned int frame_offset);
+	Task(std::string name, std::function<int(Task*)>* action);
 	~Task();
 	virtual int fire();
 	void pause();
@@ -15,7 +18,7 @@ public:
 	void terminate();
 	bool isPaused();
 	std::string getName();
-	std::function<int(Task*)> action;
+	std::function<int(Task*)>* action;
 private:
 	std::string name;
 	unsigned int frame_offset;

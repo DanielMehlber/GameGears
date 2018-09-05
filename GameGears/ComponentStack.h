@@ -21,7 +21,7 @@ public:
 template<class type>
 inline void ComponentStack::set(Component * comp)
 {
-	comp->users::append_once(this);
+	comp->user_stacks.append_once(this);
 	Component* cmp_object = getComponentObject<type>();
 	if (cmp_object == nullptr) {
 		components.append_once(comp);

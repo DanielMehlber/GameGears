@@ -2,6 +2,7 @@
 #include "List.h"
 #include "List.cpp"
 #include "Task.h"
+#include "SyncTask.h"
 #include "Console.h"
 #include "Synchronizer.h"
 #include <thread>
@@ -15,18 +16,18 @@ public:
 		NO_THREAD = 0,
 		NEW_THREAD = 1
 	};
-	void register_task(Task* task);
-	void unregister_task(Task* task);
+	void register_task(SyncTask* task);
+	void unregister_task(SyncTask* task);
 	void start();
 	void start(enum THREADING_HINT);
-	Task* getTask(std::string name);
+	SyncTask* getTask(std::string name);
 	void pause();
 	void terminate();
 	void update();
 private:
-	List<Task*> tasks;
+	List<SyncTask*> tasks;
 	bool paused;
-	void process_return(Task* task, int re);
+	void process_return(SyncTask* task, int re);
 	bool terminate_all = false;
 	std::thread mgr_thread;
 };

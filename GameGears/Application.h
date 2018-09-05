@@ -9,6 +9,7 @@ public:
 	~Application();
 	Canvas* canvas;
 	RenderComponent* renderer;
+	TaskManager* renderManager;
 	TaskManager* taskManager;
 	void start();
 	void close();

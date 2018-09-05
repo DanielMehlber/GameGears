@@ -24,8 +24,11 @@ void RenderComponent::unregister_object(Renderable * renderObject)
 
 void RenderComponent::render()
 {
+	for (Renderable* renderObject : *renderObjects.getData())
+		renderObject->reset();
 	for (Renderable* renderObject : *renderObjects.getData()) {
-		renderObject->render();
+		if(!renderObject->rendered)
+			renderObject->render();
 	}
 	
 }

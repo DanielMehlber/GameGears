@@ -132,6 +132,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Application.h" />
+    <ClInclude Include="BehaviorComponent.h" />
     <ClInclude Include="Canvas.h" />
     <ClInclude Include="Component.h" />
     <ClInclude Include="ComponentStack.h" />
@@ -140,6 +141,7 @@
     <ClInclude Include="Image.h" />
     <ClInclude Include="List.h" />
     <ClInclude Include="MeshComponent.h" />
+    <ClInclude Include="ObjectBehaviorExample.h" />
     <ClInclude Include="OGLObject.h" />
     <ClInclude Include="Renderable.h" />
     <ClInclude Include="RenderComponent.h" />
@@ -149,7 +151,6 @@
     <ClInclude Include="ShaderUniform.h" />
     <ClInclude Include="Synchronizer.h" />
     <ClInclude Include="SyncTask.h" />
-    <ClInclude Include="Task.h" />
     <ClInclude Include="TaskManager.h" />
     <ClInclude Include="Texture.h" />
     <ClInclude Include="TextureComponent.h" />
@@ -157,6 +158,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Application.cpp" />
+    <ClCompile Include="BehaviorComponent.cpp" />
     <ClCompile Include="Canvas.cpp" />
     <ClCompile Include="Component.cpp" />
     <ClCompile Include="ComponentStack.cpp" />
@@ -165,6 +167,7 @@
     <ClCompile Include="Image.cpp" />
     <ClCompile Include="List.cpp" />
     <ClCompile Include="MeshComponent.cpp" />
+    <ClCompile Include="ObjectBehaviorExample.cpp" />
     <ClCompile Include="OGLObject.cpp" />
     <ClCompile Include="Renderable.cpp" />
     <ClCompile Include="RenderComponent.cpp" />
@@ -175,7 +178,6 @@
     <ClCompile Include="stb_image.cpp" />
     <ClCompile Include="Synchronizer.cpp" />
     <ClCompile Include="SyncTask.cpp" />
-    <ClCompile Include="Task.cpp" />
     <ClCompile Include="TaskManager.cpp" />
     <ClCompile Include="Tester.cpp" />
     <ClCompile Include="Texture.cpp" />

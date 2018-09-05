@@ -7,14 +7,13 @@
 class GameObject : public Renderable, public ComponentStack
 {
 public:
-
-
 	GameObject();
 	~GameObject();
 	void render() override;
 	
 private:
-	
+	void activate() override;
+	void deactivate() override;
 };
 
 

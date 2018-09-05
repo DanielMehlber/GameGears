@@ -13,12 +13,13 @@ public:
 	Canvas(int width, int height);
 	Canvas();
 	~Canvas();
-	int update(Task* task);
+	int update(SyncTask* task);
 	void close();
 	static void on_resize(GLFWwindow* window, int width, int height);
 	RenderComponent* renderer;
 	GLFWwindow* window;
 	SyncTask* update_task;
 	List<std::function<void()>*> close_operations;
+	std::function<int(SyncTask* task)> update_func;
 };
 

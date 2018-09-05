@@ -4,12 +4,11 @@
 
 
 
-Task::Task(std::string name, std::function<int(Task*)> action, unsigned int frame_offset) : name{ name }, action{ action }, frame_offset{ frame_offset }
+Task::Task(std::string name, std::function<int(Task*)>* action, unsigned int frame_offset) : name{ name }, action{ action }, frame_offset{ frame_offset }
 {
-
 }
 
-Task::Task(std::string name, std::function<int(Task*)> action) : Task::Task(name, action, 0)
+Task::Task(std::string name, std::function<int(Task*)>* action) : Task::Task(name, action, 0)
 {
 }
 
@@ -28,7 +27,7 @@ int Task::fire()
 	frames_passed = 0;
 
 	try {
-		return_value = Task::action(this);
+		return_value = (*Task::action)(this);
 	}
 	catch (std::bad_function_call) {
 		std::string message = "The function of Task '" + getName() + "' cannot be called. Reason:\n";

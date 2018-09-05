@@ -4,7 +4,7 @@
 
 Component::Component(tags tag)
 {
-	users = List<GameObject*>();
+	user_stacks = List<ComponentStack*>();
 	Component::tag = tag;
 }
 

@@ -4,7 +4,7 @@
 
 TaskManager::TaskManager(unsigned int ups) : Synchronizer(ups)
 {
-	tasks = List<Task*>();
+	tasks = List<SyncTask*>();
 	paused = false;
 }
 
@@ -18,7 +18,7 @@ TaskManager::~TaskManager()
 	tasks.~List();
 }
 
-void TaskManager::register_task(Task * task)
+void TaskManager::register_task(SyncTask * task)
 {
 	if (getTask(task->getName()) != nullptr) {
 		std::string name = task->getName();
@@ -29,7 +29,7 @@ void TaskManager::register_task(Task * task)
 	tasks.append(task);
 }
 
-void TaskManager::unregister_task(Task * task)
+void TaskManager::unregister_task(SyncTask * task)
 {
 	tasks.remove(task);
 }
@@ -48,6 +48,11 @@ void TaskManager::start()
 		}
 	}
 
+	for (SyncTask* task : *tasks.getData()) {
+		task->terminate();
+		unregister_task(task);
+	}
+
 	std::cout << "TaskManager terminated" << std::endl;
 }
 
@@ -64,10 +69,10 @@ void TaskManager::start(enum TaskManager::THREADING_HINT hint) {
 	}
 }
 
-Task * TaskManager::getTask(std::string name)
+SyncTask * TaskManager::getTask(std::string name)
 {
-	std::vector<Task*>* data_vector = tasks.getData();
-	for (Task* task : *data_vector) {
+	std::vector<SyncTask*>* data_vector = tasks.getData();
+	for (SyncTask* task : *data_vector) {
 
 		if (task->getName() == name) {
 			return task;
@@ -89,14 +94,13 @@ void TaskManager::terminate()
 
 void TaskManager::update()
 {
-	for (Task* task : *tasks.getData()) {
+	for (SyncTask* task : *tasks.getData()) {
 		int re = task->fire();
 		process_return(task, re);
-
 	}
 }
 
-void TaskManager::process_return(Task * task, int re)
+void TaskManager::process_return(SyncTask * task, int re)
 {
 	if (re == Task::TERMINATE)
 		unregister_task(task);

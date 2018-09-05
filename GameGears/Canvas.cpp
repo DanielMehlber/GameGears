@@ -6,8 +6,8 @@ Canvas::Canvas(int width, int height, const char* title)
 {
 	renderer = new RenderComponent();
 
-	std::function<int(Task*)> update_func = [=](Task* task) {return update(task); };
-	update_task = new SyncTask("canvas-update", update_func, 60);
+	update_func = [=](SyncTask* task) {return update(task); };
+	update_task = new SyncTask("canvas-update", &update_func, 60);
 
 	close_operations = List<std::function<void()>*>();
 
@@ -28,6 +28,7 @@ Canvas::Canvas(int width, int height, const char* title)
 	}
 
 	glViewport(0, 0, width, height);
+	glClearColor(0.5, 0.5, 0, 1);
 }
 
 Canvas::Canvas(int width, int height):Canvas(width, height, "GameGear - Powered by NEON-Graphics")
@@ -43,7 +44,7 @@ Canvas::~Canvas()
 {
 }
 
-int Canvas::update(Task* task)
+int Canvas::update(SyncTask* task)
 {
 	if (glfwWindowShouldClose(window)) {
 		task->terminate();
@@ -51,7 +52,6 @@ int Canvas::update(Task* task)
 	}
 
 	glClear(GL_COLOR_BUFFER_BIT);
-	glClearColor(1, 0, 0, 1);
 
 	renderer->render();
 

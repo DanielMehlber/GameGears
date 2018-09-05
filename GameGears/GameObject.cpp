@@ -15,6 +15,9 @@ GameObject::~GameObject()
 
 void GameObject::render()
 {
+	if (rendered)
+		return;
+
 	List<Component*> relevant = getTaged(Component::tags::RENDER_RELEVANT);
 
 	MeshComponent* meshCmp = getComponent<MeshComponent>();
@@ -30,20 +33,31 @@ void GameObject::render()
 		textureCmp->activate();
 	shaderCmp->activate();
 
-	int users_rendered = meshCmp->user_rendered_count();
-
-	if(users_rendered == 0)
+	if (!meshCmp->active) {
+		List<GameObject*> all_users = meshCmp->getUsers<GameObject>();
 		meshCmp->activate();
-	
-	meshCmp->render();
-
-	if(users_rendered == meshCmp->users.size())
+		for (GameObject* user : *all_users.getData()) {
+			user->render();
+		}
 		meshCmp->deactivate();
+	}
+	else {
+		meshCmp->render();
+	}
+
 	shaderCmp->deactivate();
 	if (textureCmp != nullptr)
 		textureCmp->deactivate();
 
 	rendered = true;
+}
+
+void GameObject::activate()
+{
+}
+
+void GameObject::deactivate()
+{
 }
 
 

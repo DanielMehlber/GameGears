@@ -5,7 +5,7 @@
 #include "GLEW/glew.h"
 #include "GLFW/glfw3.h"
 #include "GameObject.h"
-
+#include "ObjectBehaviorExample.h"
 
 
 
@@ -29,13 +29,17 @@ int main() {
 
 	MeshComponent* mesh = new MeshComponent();
 	mesh->pack();
-	std::cout << mesh->id << std::endl;
 
 	GameObject* object = new GameObject();
+
+	ObjectBehaviorExample* game_object_behavior = new ObjectBehaviorExample();
 
 	object->set<MeshComponent>(mesh);
 	object->set<TextureComponent>(textureCmp);
 	object->set<ShaderComponent>(shaderCmp);
+	object->set<BehaviorComponent<GameObject>>(game_object_behavior);
+
+	app.taskManager->register_task(game_object_behavior);
 
 	app.renderer->register_object(object);
 	app.start();

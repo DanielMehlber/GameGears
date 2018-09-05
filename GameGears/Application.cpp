@@ -8,13 +8,14 @@ Application::Application()
 	renderer = canvas->renderer;
 	close_app = [=]() {
 		//Destroy Loop and return to outside-application
-		taskManager->unregister_task(canvas->update_task);
+		renderManager->terminate();
 		taskManager->terminate();
 		Application::~Application();
 	};
 	canvas->close_operations.append(&close_app);
-	taskManager = new TaskManager();
-	taskManager->register_task(canvas->update_task);
+	renderManager = new TaskManager();
+	taskManager = new TaskManager(60);
+	renderManager->register_task(canvas->update_task);
 }
 
 
@@ -25,7 +26,8 @@ Application::~Application()
 
 void Application::start()
 {
-	taskManager->start(TaskManager::NO_THREAD);
+	taskManager->start(TaskManager::NEW_THREAD);
+	renderManager->start(TaskManager::NO_THREAD);
 }
 
 void Application::close()

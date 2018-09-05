@@ -36,9 +36,6 @@
     <ClInclude Include="TaskManager.h">
       <Filter>Header Files\core</Filter>
     </ClInclude>
-    <ClInclude Include="Task.h">
-      <Filter>Header Files\core</Filter>
-    </ClInclude>
     <ClInclude Include="SyncTask.h">
       <Filter>Header Files\core</Filter>
     </ClInclude>
@@ -96,6 +93,12 @@
     <ClInclude Include="ComponentStack.h">
       <Filter>Header Files\data</Filter>
     </ClInclude>
+    <ClInclude Include="BehaviorComponent.h">
+      <Filter>Header Files\components</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjectBehaviorExample.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Application.cpp">
@@ -120,9 +123,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="SyncTask.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Task.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="TaskManager.cpp">
@@ -171,6 +171,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="ComponentStack.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BehaviorComponent.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjectBehaviorExample.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
