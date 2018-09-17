@@ -4,6 +4,7 @@ in vec3 color;
 in vec2 tex_coords;
 
 uniform sampler2D diffuseTexture;
+uniform mat4 trans;
 
 void main(){
 	gl_FragColor = texture2D(diffuseTexture, tex_coords);

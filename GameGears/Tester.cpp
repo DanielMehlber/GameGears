@@ -22,7 +22,7 @@ int main() {
 	ShaderComponent* shaderCmp = new ShaderComponent(vertexShader, fragmentShader);
 	shaderCmp->pack();
 
-	Texture* tex = Texture::loadTexture("C:/Users/danie/Google Drive/CG Textures/Ground/Snow_512_n.jpg");
+	Texture* tex = Texture::loadTexture("C:/Users/danie/Google Drive/CG Textures/Ground/BrokenGround.jpg");
 
 	TextureComponent* textureCmp = new TextureComponent();
 	textureCmp->setDiffuse(tex);
@@ -38,6 +38,9 @@ int main() {
 	object->set<TextureComponent>(textureCmp);
 	object->set<ShaderComponent>(shaderCmp);
 	object->set<BehaviorComponent<GameObject>>(game_object_behavior);
+	object->setPos(0, 0, 0);
+	object->setRot(0, 0, 0);
+	object->setScale(1, 1, 1);
 
 	app.taskManager->register_task(game_object_behavior);
 

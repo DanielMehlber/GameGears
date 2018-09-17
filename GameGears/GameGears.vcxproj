@@ -154,6 +154,7 @@
     <ClInclude Include="TaskManager.h" />
     <ClInclude Include="Texture.h" />
     <ClInclude Include="TextureComponent.h" />
+    <ClInclude Include="Transform.h" />
     <ClInclude Include="Vertex.h" />
   </ItemGroup>
   <ItemGroup>
@@ -182,6 +183,7 @@
     <ClCompile Include="Tester.cpp" />
     <ClCompile Include="Texture.cpp" />
     <ClCompile Include="TextureComponent.cpp" />
+    <ClCompile Include="Transform.cpp" />
     <ClCompile Include="Vertex.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

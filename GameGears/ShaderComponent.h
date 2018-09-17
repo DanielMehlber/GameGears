@@ -22,6 +22,7 @@ public:
 	ShaderComponent(Shader* vertex, Shader* fragment, Shader* geometry);
 	~ShaderComponent();
 
+	ShaderUniform<glm::mat4>* uniform_transformation_matrix;
 
 	void setVertexShader(Shader* shader);
 	void setFragmentShader(Shader* shader);
@@ -32,13 +33,6 @@ public:
 	void deactivate();
 	void attribute(int index, const char* name);
 
-	//static const char*  default_vertex_loc;
-	//static const char*  default_fragment_loc;
-
-	//static Shader* default_vertex_shader;
-	//static Shader* default_fragment_shader;
-
-	//static ShaderComponent* defaultShader;
 	static ShaderComponent* genDefaultShader();
 	
 private:

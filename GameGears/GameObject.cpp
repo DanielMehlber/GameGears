@@ -31,6 +31,7 @@ void GameObject::render()
 		shaderCmp = ShaderComponent::genDefaultShader();
 	if (textureCmp != nullptr)
 		textureCmp->activate();
+	shaderCmp->uniform_transformation_matrix->set(Transform::getTransformationMatrix());
 	shaderCmp->activate();
 
 	if (!meshCmp->active) {

@@ -3,8 +3,9 @@
 #include "MeshComponent.h"
 #include "TextureComponent.h"
 #include "ComponentStack.h"
+#include "Transform.h"
 
-class GameObject : public Renderable, public ComponentStack
+class GameObject : public Renderable, public ComponentStack, public Transform
 {
 public:
 	GameObject();

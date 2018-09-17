@@ -28,7 +28,7 @@ Canvas::Canvas(int width, int height, const char* title)
 	}
 
 	glViewport(0, 0, width, height);
-	glClearColor(0.5, 0.5, 0, 1);
+	glClearColor(0.0, 0.1, 0.3, 1);
 }
 
 Canvas::Canvas(int width, int height):Canvas(width, height, "GameGear - Powered by NEON-Graphics")

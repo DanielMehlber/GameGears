@@ -22,7 +22,6 @@ bool Synchronizer::is_update_allowed()
 
 	long now_ms = now.time_since_epoch().count();
 	long last_ms = last_update_time.time_since_epoch().count();
-	//std::cout << delay_time << "---" <<now_ms << " : " << last_ms <<"=" << now_ms - last_ms <<std::endl;
 	long time_passed = now_ms - last_ms;
 
 	if (time_passed > delay_time) {

@@ -3,11 +3,13 @@
 in vec3 vertex_position;
 in vec2 vertex_tex_coords;
 
+uniform mat4 trans;
+
 out vec3 color;
 out vec2 tex_coords;
 
 void main(){
-	gl_Position = vec4(vertex_position, 1.0);
+	gl_Position = trans * vec4(vertex_position, 1.0);
 	color = vec3(1, 0 ,1);
 	tex_coords = vertex_tex_coords;
 }

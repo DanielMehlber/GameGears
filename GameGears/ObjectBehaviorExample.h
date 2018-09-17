@@ -12,5 +12,7 @@ public:
 	void update(GameObject* object, SyncTask* task) override ;
 	void pause(GameObject* object, SyncTask* task) override;
 	void destroy(GameObject* object, SyncTask* task) override;
+
+	float counter;
 };
 

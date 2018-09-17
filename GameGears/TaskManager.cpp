@@ -44,7 +44,7 @@ void TaskManager::start()
 
 			if (Synchronizer::is_update_allowed())
 				update();
-		
+				
 		}
 	}
 
