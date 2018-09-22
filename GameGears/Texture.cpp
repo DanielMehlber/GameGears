@@ -29,11 +29,6 @@ Texture::~Texture()
 	GLCall(glDeleteTextures(1, &id));
 }
 
-Texture * Texture::loadTexture(const char * location)
-{
-	Image* img = Image::load(location);
-	return new Texture(img);
-}
 
 void Texture::setImage(Image * img)
 {

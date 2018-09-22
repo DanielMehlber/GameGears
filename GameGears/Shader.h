@@ -26,7 +26,6 @@ public:
 
 	Shader(const char* src, TYPES type);
 	~Shader();
-	static Shader* loadShader(TYPES type ,const char* location);
 private:
 	void init(TYPES type);
 	void checkCompileStatus();

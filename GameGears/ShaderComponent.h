@@ -6,6 +6,7 @@
 #include "ShaderUniform.cpp"
 #include "glm/vec2.hpp"
 #include "Component.h"
+#include "Loader.h"
 
 namespace attribs {
 	static ShaderAttrib vertex_position = ShaderAttrib(0, "vertex_position");

@@ -16,7 +16,6 @@ public:
 	};
 	Texture(Image* img);
 	~Texture();
-	static Texture* loadTexture(const char* location);
 	void setImage(Image* img);
 
 	void activate(int slot);

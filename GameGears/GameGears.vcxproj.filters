@@ -102,6 +102,9 @@
     <ClInclude Include="Transform.h">
       <Filter>Header Files\data</Filter>
     </ClInclude>
+    <ClInclude Include="Loader.h">
+      <Filter>Header Files\data</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Application.cpp">
@@ -183,6 +186,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Transform.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Loader.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

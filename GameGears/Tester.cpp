@@ -6,7 +6,7 @@
 #include "GLFW/glfw3.h"
 #include "GameObject.h"
 #include "ObjectBehaviorExample.h"
-
+#include "Loader.h"
 
 
 int main() {
@@ -16,13 +16,13 @@ int main() {
 
 	Application app = Application();
 
-	Shader* vertexShader = Shader::loadShader(Shader::VERTEX_SHADER, "C:/Users/danie/Google Drive/Game Engine/GameGears/res/vertex.txt");
-	Shader* fragmentShader = Shader::loadShader(Shader::FRAGMENT_SHADER, "C:/Users/danie/Google Drive/Game Engine/GameGears/res/fragment.txt");
+	Shader* vertexShader = Loader::loadShader(Shader::VERTEX_SHADER, "C:/Users/danie/Google Drive/Game Engine/GameGears/res/vertex.txt");
+	Shader* fragmentShader = Loader::loadShader(Shader::FRAGMENT_SHADER, "C:/Users/danie/Google Drive/Game Engine/GameGears/res/fragment.txt");
 	
 	ShaderComponent* shaderCmp = new ShaderComponent(vertexShader, fragmentShader);
 	shaderCmp->pack();
 
-	Texture* tex = Texture::loadTexture("C:/Users/danie/Google Drive/CG Textures/Ground/BrokenGround.jpg");
+	Texture* tex = new Texture(Loader::loadImage("C:/Users/danie/Google Drive/CG Textures/Ground/BrokenGround.jpg"));
 
 	TextureComponent* textureCmp = new TextureComponent();
 	textureCmp->setDiffuse(tex);

@@ -17,26 +17,6 @@ Shader::~Shader()
 	glDeleteShader(id);
 }
 
-Shader* Shader::loadShader(TYPES type, const char * location)
-{
-	std::string txt;
-	std::ifstream infile;
-	infile.open(location);
-	if (!infile.is_open()) {
-		std::string message = std::string("Cannot open file: ") + std::string(location);
-		Console::err("SHADER_SOURCE_LOADER", message.c_str());
-		Console::leave();
-	}
-	while (!infile.eof())
-	{
-		std::string line;
-		getline(infile, line);
-		txt = txt + "\n" + line;
-	}
-	infile.close();
-	return new Shader(txt.c_str(), type);
-}
-
 
 void Shader::init(TYPES type)
 {

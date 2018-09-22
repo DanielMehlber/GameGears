@@ -140,6 +140,7 @@
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="Image.h" />
     <ClInclude Include="List.h" />
+    <ClInclude Include="Loader.h" />
     <ClInclude Include="MeshComponent.h" />
     <ClInclude Include="ObjectBehaviorExample.h" />
     <ClInclude Include="OGLObject.h" />
@@ -167,6 +168,7 @@
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="Image.cpp" />
     <ClCompile Include="List.cpp" />
+    <ClCompile Include="Loader.cpp" />
     <ClCompile Include="MeshComponent.cpp" />
     <ClCompile Include="ObjectBehaviorExample.cpp" />
     <ClCompile Include="OGLObject.cpp" />

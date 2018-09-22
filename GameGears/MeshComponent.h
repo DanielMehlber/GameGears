@@ -5,7 +5,6 @@
 #include "Vertex.h"
 #include "GLEW/glew.h"
 #include "ShaderComponent.h"
-#include "Texture.h"
 #include "Component.h"
 
 class MeshComponent : public Renderable, public OGLObject, public Component
