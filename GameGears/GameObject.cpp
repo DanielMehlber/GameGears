@@ -44,12 +44,13 @@ void GameObject::activate()
  
 	if (meshCmp == nullptr)
 		return;
-	if (shaderCmp == nullptr)
+	if (shaderCmp == nullptr) {
 		shaderCmp = ShaderComponent::genDefaultShader();
+		Console::print("SHADER_GEN", "Generated default shaders");
+	}
 	if (textureCmp != nullptr)
 		textureCmp->activate();
 	meshCmp->activate();
-	shaderCmp->activate();
 	active = true;
 
 }

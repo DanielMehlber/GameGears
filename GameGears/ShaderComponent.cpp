@@ -117,17 +117,17 @@ void ShaderComponent::pack()
 
 void ShaderComponent::activate()
 {
-	glUseProgram(id);
+	GLCall(glUseProgram(id));
 }
 
 void ShaderComponent::deactivate()
 {
-	glUseProgram(0);
+	GLCall(glUseProgram(0));
 }
 
 void ShaderComponent::attribute(int index, const char * name)
 {
-	glBindAttribLocation(id, index, name);
+	GLCall(glBindAttribLocation(id, index, name));
 }
 
 
@@ -145,7 +145,7 @@ ShaderComponent * ShaderComponent::genDefaultShader()
 
 void ShaderComponent::attachShader(Shader * shader)
 {
-	glAttachShader(id, shader->id);
+	GLCall(glAttachShader(id, shader->id));
 }
 
 void ShaderComponent::checkShader(Shader * shader)
