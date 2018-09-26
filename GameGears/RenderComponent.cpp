@@ -27,8 +27,10 @@ void RenderComponent::render()
 	for (Renderable* renderObject : *renderObjects.getData())
 		renderObject->reset();
 	for (Renderable* renderObject : *renderObjects.getData()) {
-		if(!renderObject->rendered)
+		if (!renderObject->rendered)
+			renderObject->activate();
 			renderObject->render();
+			renderObject->deactivate();
 	}
 	
 }

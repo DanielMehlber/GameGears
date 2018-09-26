@@ -18,47 +18,49 @@ void GameObject::render()
 	if (rendered)
 		return;
 
-	List<Component*> relevant = getTaged(Component::tags::RENDER_RELEVANT);
+	for (Instance* instance : *instances.getData()) {
+		instance->spawn();
+	}
+
+	rendered = true;
+}
+
+Instance * GameObject::instance()
+{
+	Instance * inst = new Instance(this);
+	instances.append(inst);
+	return inst;
+}
+
+void GameObject::activate()
+{
+	if (rendered)
+		return;
 
 	MeshComponent* meshCmp = getComponent<MeshComponent>();
 	ShaderComponent* shaderCmp = getComponent<ShaderComponent>();
 	TextureComponent* textureCmp = getComponent<TextureComponent>();
-	
 
+ 
 	if (meshCmp == nullptr)
 		return;
 	if (shaderCmp == nullptr)
 		shaderCmp = ShaderComponent::genDefaultShader();
 	if (textureCmp != nullptr)
 		textureCmp->activate();
-	shaderCmp->uniform_transformation_matrix->set(Transform::getTransformationMatrix());
+	meshCmp->activate();
 	shaderCmp->activate();
+	active = true;
 
-	if (!meshCmp->active) {
-		List<GameObject*> all_users = meshCmp->getUsers<GameObject>();
-		meshCmp->activate();
-		for (GameObject* user : *all_users.getData()) {
-			user->render();
-		}
-		meshCmp->deactivate();
-	}
-	else {
-		meshCmp->render();
-	}
-
-	shaderCmp->deactivate();
-	if (textureCmp != nullptr)
-		textureCmp->deactivate();
-
-	rendered = true;
-}
-
-void GameObject::activate()
-{
 }
 
 void GameObject::deactivate()
 {
+	getComponent<MeshComponent>()->deactivate();
+	getComponent<ShaderComponent>()->deactivate();
+	getComponent<TextureComponent>()->deactivate();
+
+	active = false;
 }
 
 

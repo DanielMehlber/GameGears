@@ -1,8 +1,17 @@
 #pragma once
-class Instance
+#include "GameObject.h"
+
+class GameObject;
+
+class Instance : public Transform
 {
 public:
-	Instance();
+	GameObject* reference;
+	Instance(GameObject* ref);
 	~Instance();
+	void spawn();
+	
+private:
+	bool visible = true;
 };
 

@@ -38,9 +38,7 @@ int main() {
 	object->set<TextureComponent>(textureCmp);
 	object->set<ShaderComponent>(shaderCmp);
 	object->set<BehaviorComponent<GameObject>>(game_object_behavior);
-	object->setPos(0, 0, 0);
-	object->setRot(0, 0, 0);
-	object->setScale(1, 1, 1);
+	Instance* inst = object->instance();
 
 	app.taskManager->register_task(game_object_behavior);
 
