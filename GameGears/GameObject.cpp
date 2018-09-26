@@ -51,6 +51,7 @@ void GameObject::activate()
 	if (textureCmp != nullptr)
 		textureCmp->activate();
 	meshCmp->activate();
+	shaderCmp->activate();
 	active = true;
 
 }

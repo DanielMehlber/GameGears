@@ -1,5 +1,5 @@
 #include "ObjectBehaviorExample.h"
-
+#include "glm/gtx/string_cast.hpp"
 
 
 
@@ -25,6 +25,7 @@ void ObjectBehaviorExample::update(Instance * object, SyncTask * task)
 	counter += 0.01;
 	object->setPos(sinf(counter), 0,0);
 	object->rotate(0.1f, 0.01f, 0.0f);
+	std::cout << glm::to_string(object->getTransformationMatrix()) << std::endl;
 }
 
 void ObjectBehaviorExample::pause(Instance * object, SyncTask * task)

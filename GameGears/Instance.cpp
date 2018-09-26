@@ -34,10 +34,8 @@ void Instance::spawn()
 	
 	//Set Transformation Matrix
 	ShaderComponent * shader = reference->getComponent<ShaderComponent>();
-	shader->uniform_transformation_matrix->set(getTransformationMatrix());
-	
+	shader->uniform_transformation_matrix->set(Transform::getTransformationMatrix());
 	//Render instance
 	reference->getComponent<MeshComponent>()->render();
-	std::cout << "Rendered" << std::endl;
 
 }

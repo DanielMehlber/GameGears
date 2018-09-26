@@ -1,6 +1,7 @@
 #pragma once
 #include "Component.h"
 #include "SyncTask.h"
+#include "GameObject.h"
 
 template <typename type>
 class BehaviorComponent : public Component, public SyncTask
