@@ -9,6 +9,9 @@ Instance::Instance(GameObject * ref)
 		Console::err("INVALID_INSTANCE_REFERENCE", "The reference of an instance is invalid");
 	}
 	Instance::reference = ref;
+	BehaviorComponent<Instance>* b = ref->getComponent<BehaviorComponent<Instance>>();
+	std::cout << b << std::endl;
+	ComponentStack::set<BehaviorComponent<Instance>>(b);
 }
 
 Instance::~Instance()
