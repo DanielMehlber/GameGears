@@ -11,7 +11,7 @@
 class MeshComponent : public Renderable, public OGLObject, public Component
 {
 public:
-	MeshComponent();
+	MeshComponent(RenderComponent* context);
 	~MeshComponent();
 	void render() override;
 	void activate() override;

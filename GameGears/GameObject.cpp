@@ -4,7 +4,7 @@
 
 
 
-GameObject::GameObject()
+GameObject::GameObject(RenderComponent* context) : Renderable(context)
 {
 }
 
@@ -52,6 +52,7 @@ void GameObject::activate()
 		textureCmp->activate();
 	meshCmp->activate();
 	shaderCmp->activate();
+	shaderCmp->uniform_projection_matrix->set(Renderable::renderContext->getCamera()->getViewProjectionMatrix());
 	active = true;
 
 }

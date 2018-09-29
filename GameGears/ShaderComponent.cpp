@@ -112,7 +112,8 @@ void ShaderComponent::pack()
 	glBindAttribLocation(id, attribs::vertex_position.getLocation(), attribs::vertex_position.getName());
 	glBindAttribLocation(id, attribs::vertex_tex_coords.getLocation(), attribs::vertex_tex_coords.getName());
 	//Define Uniform Variables here
-	uniform_transformation_matrix = new ShaderUniform<glm::mat4>(id, "trans", glm::mat4());
+	uniform_transformation_matrix = new ShaderUniform<glm::mat4>(id, "transformation", glm::mat4());
+	uniform_projection_matrix = new ShaderUniform<glm::mat4>(id, "projection", glm::mat4());
 }
 
 void ShaderComponent::activate()

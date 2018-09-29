@@ -1,8 +1,9 @@
 #include "RenderComponent.h"
 
 
-RenderComponent::RenderComponent()
+RenderComponent::RenderComponent(Camera* cam)
 {
+	camera = cam;
 	glEnable(GL_DEPTH_TEST);
 }
 
@@ -33,4 +34,14 @@ void RenderComponent::render()
 			renderObject->deactivate();
 	}
 	
+}
+
+Camera * RenderComponent::getCamera()
+{
+	return camera;
+}
+
+void RenderComponent::setCamera(Camera * cam)
+{
+	camera = cam;
 }

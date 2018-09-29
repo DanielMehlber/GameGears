@@ -133,6 +133,7 @@
   <ItemGroup>
     <ClInclude Include="Application.h" />
     <ClInclude Include="BehaviorComponent.h" />
+    <ClInclude Include="Camera.h" />
     <ClInclude Include="Canvas.h" />
     <ClInclude Include="Component.h" />
     <ClInclude Include="ComponentStack.h" />
@@ -162,6 +163,7 @@
   <ItemGroup>
     <ClCompile Include="Application.cpp" />
     <ClCompile Include="BehaviorComponent.cpp" />
+    <ClCompile Include="Camera.cpp" />
     <ClCompile Include="Canvas.cpp" />
     <ClCompile Include="Component.cpp" />
     <ClCompile Include="ComponentStack.cpp" />

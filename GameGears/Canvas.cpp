@@ -4,7 +4,6 @@
 
 Canvas::Canvas(int width, int height, const char* title)
 {
-	renderer = new RenderComponent();
 
 	update_func = [=](SyncTask* task) {return update(task); };
 	update_task = new SyncTask("canvas-update", &update_func, 60);
@@ -29,6 +28,8 @@ Canvas::Canvas(int width, int height, const char* title)
 
 	glViewport(0, 0, width, height);
 	glClearColor(0.0, 0.1, 0.3, 1);
+
+	renderer = new RenderComponent(new Camera(this));
 }
 
 Canvas::Canvas(int width, int height):Canvas(width, height, "GameGear - Powered by NEON-Graphics")
@@ -80,5 +81,23 @@ void Canvas::close()
 void Canvas::on_resize(GLFWwindow * window, int width, int height)
 {
 	glViewport(0, 0, width, height);
+}
+
+float Canvas::getWidth()
+{
+	glfwGetWindowSize(window, &width, &height);
+	return width;
+}
+
+float Canvas::getHeight()
+{
+	glfwGetWindowSize(window, &width, &height);
+	return height;
+}
+
+float Canvas::getAspectRatio()
+{
+	glfwGetWindowSize(window, &width, &height);
+	return ((float)width) / ((float)height);
 }
 

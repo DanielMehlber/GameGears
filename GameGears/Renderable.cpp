@@ -2,8 +2,9 @@
 
 
 
-Renderable::Renderable()
+Renderable::Renderable(RenderComponent* context)
 {
+	renderContext = context;
 }
 
 

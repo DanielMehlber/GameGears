@@ -3,7 +3,7 @@
 //TODO: index buffer: unsigned char* < unsigned short* < unsigned int*: indices size adaption (depends on vertex_count) 
 
 
-MeshComponent::MeshComponent() : Component(Component::tags::RENDER_RELEVANT)
+MeshComponent::MeshComponent(RenderComponent* context) : Component(Component::tags::RENDER_RELEVANT), Renderable(context)
 {
 	//Init Lists
 	vertices = List<Vertex*>();

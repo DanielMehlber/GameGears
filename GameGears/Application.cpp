@@ -1,5 +1,5 @@
 #include "Application.h"
-
+#include "Camera.h"
 
 
 Application::Application()
@@ -14,7 +14,7 @@ Application::Application()
 	};
 	canvas->close_operations.append(&close_app);
 	renderManager = new TaskManager();
-	taskManager = new TaskManager(1);
+	taskManager = new TaskManager(60);
 	renderManager->register_task(canvas->update_task);
 }
 

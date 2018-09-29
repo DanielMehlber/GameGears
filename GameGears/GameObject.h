@@ -5,13 +5,16 @@
 #include "ComponentStack.h"
 #include "Transform.h"
 #include "Instance.h"
+#include "Renderable.h"
+#include "RenderComponent.h"
+#include "Camera.h"
 
 class Instance;
 
 class GameObject : public Renderable, public ComponentStack
 {
 public:
-	GameObject();
+	GameObject(RenderComponent* context);
 	~GameObject();
 	void render() override;
 	Instance* instance();
