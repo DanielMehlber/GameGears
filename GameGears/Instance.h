@@ -1,6 +1,8 @@
 #pragma once
 #include "GameObject.h"
 #include "BehaviorComponent.h"
+#include "ComponentStack.h"
+#include "Transform.h"
 
 class GameObject;
 

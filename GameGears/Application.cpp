@@ -14,7 +14,7 @@ Application::Application()
 	};
 	canvas->close_operations.append(&close_app);
 	renderManager = new TaskManager();
-	taskManager = new TaskManager(60);
+	taskManager = new TaskManager(1);
 	renderManager->register_task(canvas->update_task);
 }
 

@@ -38,7 +38,8 @@ int main() {
 	object->set<TextureComponent>(textureCmp);
 	object->set<ShaderComponent>(shaderCmp);
 	object->set<BehaviorComponent<GameObject>>(game_object_behavior);
-	Instance* inst = object->instance();
+	for (int i = 0; i < 10; i++)
+		object->instance()->setRot(10 * i, 10 * i, 10 * i);
 
 	app.taskManager->register_task(game_object_behavior);
 

@@ -20,6 +20,7 @@ ShaderUniform<type>::~ShaderUniform()
 
 template < typename type > void ShaderUniform<type>::set(type value)
 {
+	
 	if (location == -1) {
 		location = getLocation();
 		return;

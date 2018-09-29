@@ -6,6 +6,7 @@
 #include "GLEW/glew.h"
 #include "ShaderComponent.h"
 #include "Component.h"
+#include "Instance.h"
 
 class MeshComponent : public Renderable, public OGLObject, public Component
 {

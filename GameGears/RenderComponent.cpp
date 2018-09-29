@@ -3,7 +3,7 @@
 
 RenderComponent::RenderComponent()
 {
-
+	glEnable(GL_DEPTH_TEST);
 }
 
 

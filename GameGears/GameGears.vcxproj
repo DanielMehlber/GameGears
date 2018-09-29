@@ -140,7 +140,6 @@
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="Image.h" />
     <ClInclude Include="Instance.h" />
-    <ClInclude Include="InstancedBehavior.h" />
     <ClInclude Include="List.h" />
     <ClInclude Include="Loader.h" />
     <ClInclude Include="MeshComponent.h" />
@@ -170,7 +169,6 @@
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="Image.cpp" />
     <ClCompile Include="Instance.cpp" />
-    <ClCompile Include="InstancedBehavior.cpp" />
     <ClCompile Include="List.cpp" />
     <ClCompile Include="Loader.cpp" />
     <ClCompile Include="MeshComponent.cpp" />
