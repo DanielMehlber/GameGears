@@ -6,8 +6,8 @@
 Shader::Shader(const char* src, TYPES type)
 {
 	init(type);
-	glShaderSource(id, 1, &src, NULL);
-	glCompileShader(id);
+	GLCall(glShaderSource(id, 1, &src, NULL));
+	GLCall(glCompileShader(id));
 	checkCompileStatus();
 }
 

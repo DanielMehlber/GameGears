@@ -19,6 +19,9 @@ public:
 	void rotate(float x, float y, float z);
 	glm::mat4 getTransformationMatrix();
 	void transformation_changed();
+	glm::vec3 getPos();
+	glm::vec3 getRot();
+	glm::vec3 getScale();
 private:
 	glm::vec3 pos;
 	glm::mat4 matrix_pos;

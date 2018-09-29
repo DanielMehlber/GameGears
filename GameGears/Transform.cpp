@@ -1,5 +1,5 @@
 #include "Transform.h"
-
+#include "Console.h"
 
 
 Transform::Transform() : pos{ glm::vec3() }, rot{ glm::vec3() }, scale{glm::vec3(1,1,1)}
@@ -19,6 +19,7 @@ void Transform::setPos(glm::vec3 pos)
 
 void Transform::setRot(glm::vec3 rot)
 {
+	Console::print("Transform", "Rotatet");
 	this->rot = rot;
 	transformation_changed();
 }
@@ -73,5 +74,20 @@ void Transform::transformation_changed()
 	matrix_rot_z = glm::rotate(rot.z, glm::vec3(0, 0, 1));
 	glm::mat4 matrix_rot = matrix_rot_z * matrix_rot_y * matrix_rot_x;
 	transformation = matrix_pos * matrix_rot * matrix_scale;
+}
+
+glm::vec3 Transform::getPos()
+{
+	return pos;
+}
+
+glm::vec3 Transform::getRot()
+{
+	return rot;
+}
+
+glm::vec3 Transform::getScale()
+{
+	return scale;
 }
 

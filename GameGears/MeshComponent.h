@@ -6,11 +6,12 @@
 #include "GLEW/glew.h"
 #include "ShaderComponent.h"
 #include "Component.h"
+#include "Instance.h"
 
 class MeshComponent : public Renderable, public OGLObject, public Component
 {
 public:
-	MeshComponent();
+	MeshComponent(RenderComponent* context);
 	~MeshComponent();
 	void render() override;
 	void activate() override;

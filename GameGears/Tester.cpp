@@ -27,10 +27,10 @@ int main() {
 	TextureComponent* textureCmp = new TextureComponent();
 	textureCmp->setDiffuse(tex);
 
-	MeshComponent* mesh = new MeshComponent();
+	MeshComponent* mesh = new MeshComponent(app.renderer);
 	mesh->pack();
 
-	GameObject* object = new GameObject();
+	GameObject* object = new GameObject(app.renderer);
 
 	ObjectBehaviorExample* game_object_behavior = new ObjectBehaviorExample();
 
@@ -38,9 +38,8 @@ int main() {
 	object->set<TextureComponent>(textureCmp);
 	object->set<ShaderComponent>(shaderCmp);
 	object->set<BehaviorComponent<GameObject>>(game_object_behavior);
-	object->setPos(0, 0, 0);
-	object->setRot(0, 0, 0);
-	object->setScale(1, 1, 1);
+	for (int i = 0; i < 1; i++)
+		object->instance()->setRot(10 * i, 10 * i, 10 * i);
 
 	app.taskManager->register_task(game_object_behavior);
 

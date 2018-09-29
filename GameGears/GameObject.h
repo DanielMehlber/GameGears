@@ -4,17 +4,25 @@
 #include "TextureComponent.h"
 #include "ComponentStack.h"
 #include "Transform.h"
+#include "Instance.h"
+#include "Renderable.h"
+#include "RenderComponent.h"
+#include "Camera.h"
 
-class GameObject : public Renderable, public ComponentStack, public Transform
+class Instance;
+
+class GameObject : public Renderable, public ComponentStack
 {
 public:
-	GameObject();
+	GameObject(RenderComponent* context);
 	~GameObject();
 	void render() override;
+	Instance* instance();
 	
 private:
 	void activate() override;
 	void deactivate() override;
+	List<Instance*> instances;
 };
 
 

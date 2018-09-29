@@ -6,6 +6,10 @@
 #include "List.h"
 #include "List.cpp"
 #include "SyncTask.h"
+#include "Camera.h"
+
+class Camera;
+
 class Canvas
 {
 public:
@@ -21,5 +25,12 @@ public:
 	SyncTask* update_task;
 	List<std::function<void()>*> close_operations;
 	std::function<int(SyncTask* task)> update_func;
+	float getWidth();
+	float getHeight();
+	float getAspectRatio();
+
+private:
+	int width, height;
+	float aspect_ratio;
 };
 

@@ -1,4 +1,8 @@
 #pragma once
+#include "RenderComponent.h"
+
+class RenderComponent;
+
 class Renderable
 {
 public:
@@ -8,7 +12,7 @@ public:
 		MESH_TRACE  //The Mesh is already bound, just attach components (except mesh) and render
 	};
 
-	Renderable();
+	Renderable(RenderComponent* context);
 	~Renderable();
 	virtual void activate() = 0;
 	virtual void render() = 0;
@@ -21,5 +25,6 @@ public:
 	bool rendered = false;
 	bool active = false;
 	void reset();
+	RenderComponent* renderContext;
 };
 

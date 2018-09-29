@@ -4,7 +4,7 @@
 
 
 
-GameObject::GameObject()
+GameObject::GameObject(RenderComponent* context) : Renderable(context)
 {
 }
 
@@ -18,47 +18,52 @@ void GameObject::render()
 	if (rendered)
 		return;
 
-	List<Component*> relevant = getTaged(Component::tags::RENDER_RELEVANT);
-
-	MeshComponent* meshCmp = getComponent<MeshComponent>();
-	ShaderComponent* shaderCmp = getComponent<ShaderComponent>();
-	TextureComponent* textureCmp = getComponent<TextureComponent>();
-	
-
-	if (meshCmp == nullptr)
-		return;
-	if (shaderCmp == nullptr)
-		shaderCmp = ShaderComponent::genDefaultShader();
-	if (textureCmp != nullptr)
-		textureCmp->activate();
-	shaderCmp->uniform_transformation_matrix->set(Transform::getTransformationMatrix());
-	shaderCmp->activate();
-
-	if (!meshCmp->active) {
-		List<GameObject*> all_users = meshCmp->getUsers<GameObject>();
-		meshCmp->activate();
-		for (GameObject* user : *all_users.getData()) {
-			user->render();
-		}
-		meshCmp->deactivate();
+	for (Instance* instance : *instances.getData()) {
+		instance->spawn();
 	}
-	else {
-		meshCmp->render();
-	}
-
-	shaderCmp->deactivate();
-	if (textureCmp != nullptr)
-		textureCmp->deactivate();
 
 	rendered = true;
 }
 
+Instance * GameObject::instance()
+{
+	Instance * inst = new Instance(this);
+	instances.append(inst);
+	return inst;
+}
+
 void GameObject::activate()
 {
+	if (rendered)
+		return;
+
+	MeshComponent* meshCmp = getComponent<MeshComponent>();
+	ShaderComponent* shaderCmp = getComponent<ShaderComponent>();
+	TextureComponent* textureCmp = getComponent<TextureComponent>();
+
+ 
+	if (meshCmp == nullptr)
+		return;
+	if (shaderCmp == nullptr) {
+		shaderCmp = ShaderComponent::genDefaultShader();
+		Console::print("SHADER_GEN", "Generated default shaders");
+	}
+	if (textureCmp != nullptr)
+		textureCmp->activate();
+	meshCmp->activate();
+	shaderCmp->activate();
+	shaderCmp->uniform_projection_matrix->set(Renderable::renderContext->getCamera()->getViewProjectionMatrix());
+	active = true;
+
 }
 
 void GameObject::deactivate()
 {
+	getComponent<MeshComponent>()->deactivate();
+	getComponent<ShaderComponent>()->deactivate();
+	getComponent<TextureComponent>()->deactivate();
+
+	active = false;
 }
 
 
