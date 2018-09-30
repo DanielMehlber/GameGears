@@ -7,6 +7,7 @@
 #include "GameObject.h"
 #include "ObjectBehaviorExample.h"
 #include "Loader.h"
+#include "Input.h"
 
 
 int main() {
@@ -15,6 +16,9 @@ int main() {
 	ints.size();
 
 	Application app = Application();
+	Camera* cam = app.renderer->getCamera();
+	cam->setTarget(cam->getPos() + cam->foreward);
+	
 
 	Shader* vertexShader = Loader::loadShader(Shader::VERTEX_SHADER, "C:/Users/danie/Google Drive/Game Engine/GameGears/res/vertex.txt");
 	Shader* fragmentShader = Loader::loadShader(Shader::FRAGMENT_SHADER, "C:/Users/danie/Google Drive/Game Engine/GameGears/res/fragment.txt");
@@ -42,6 +46,10 @@ int main() {
 		object->instance()->setRot(10 * i, 10 * i, 10 * i);
 
 	app.taskManager->register_task(game_object_behavior);
+
+	Input* esc = new Input("escape", GLFW_KEY_SPACE, app.canvas);
+	esc->mode = Input::InputMode::IMPULS;
+	app.taskManager->register_task(esc);
 
 	app.renderer->register_object(object);
 	app.start();

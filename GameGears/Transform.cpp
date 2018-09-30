@@ -51,7 +51,7 @@ void Transform::setScale(float x, float y, float z)
 
 void Transform::move(float x, float y, float z)
 {
-	this->setPos(pos.x + x, pos.y + y, pos.z + z);
+	this->setPos(getPos().x + x, getPos().y + y, getPos().z + z);
 }
 
 void Transform::rotate(float x, float y, float z)

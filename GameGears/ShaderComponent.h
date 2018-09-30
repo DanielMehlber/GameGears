@@ -25,6 +25,7 @@ public:
 
 	ShaderUniform<glm::mat4>* uniform_transformation_matrix;
 	ShaderUniform<glm::mat4>* uniform_projection_matrix;
+	ShaderUniform<glm::mat4>* uniform_view_matrix;
 
 	void setVertexShader(Shader* shader);
 	void setFragmentShader(Shader* shader);

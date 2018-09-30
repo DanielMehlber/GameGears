@@ -114,6 +114,7 @@ void ShaderComponent::pack()
 	//Define Uniform Variables here
 	uniform_transformation_matrix = new ShaderUniform<glm::mat4>(id, "transformation", glm::mat4());
 	uniform_projection_matrix = new ShaderUniform<glm::mat4>(id, "projection", glm::mat4());
+	uniform_view_matrix = new ShaderUniform<glm::mat4>(id, "view", glm::mat4());
 }
 
 void ShaderComponent::activate()

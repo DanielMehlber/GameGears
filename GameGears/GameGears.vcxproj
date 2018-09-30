@@ -140,6 +140,7 @@
     <ClInclude Include="Console.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="Image.h" />
+    <ClInclude Include="Input.h" />
     <ClInclude Include="Instance.h" />
     <ClInclude Include="List.h" />
     <ClInclude Include="Loader.h" />
@@ -170,6 +171,7 @@
     <ClCompile Include="Console.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="Image.cpp" />
+    <ClCompile Include="Input.cpp" />
     <ClCompile Include="Instance.cpp" />
     <ClCompile Include="List.cpp" />
     <ClCompile Include="Loader.cpp" />

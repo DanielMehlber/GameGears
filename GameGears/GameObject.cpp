@@ -52,7 +52,9 @@ void GameObject::activate()
 		textureCmp->activate();
 	meshCmp->activate();
 	shaderCmp->activate();
-	shaderCmp->uniform_projection_matrix->set(Renderable::renderContext->getCamera()->getViewProjectionMatrix());
+	shaderCmp->uniform_projection_matrix->set(Renderable::renderContext->getCamera()->getProjectionMatrix());
+	shaderCmp->uniform_view_matrix->set(Renderable::renderContext->getCamera()->getViewMatrix());
+	
 	active = true;
 
 }
