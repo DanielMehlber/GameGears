@@ -53,7 +53,7 @@ void TaskManager::start()
 		unregister_task(task);
 	}
 
-	std::cout << "TaskManager terminated" << std::endl;
+	Console::print("TaskManager", "TERMINATED");
 }
 
 void TaskManager::start(enum TaskManager::THREADING_HINT hint) {

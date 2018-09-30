@@ -18,7 +18,6 @@ void BehaviorComponent<type>::update_all(SyncTask* task)
 	for (int i = 0; i < getUsers<type>().size(); i++) {
 		type* obj = getUsers<type>().get(i);
 		this->update(obj, task);
-		Console::print("","---UPDATED---");
 	}
 
 }

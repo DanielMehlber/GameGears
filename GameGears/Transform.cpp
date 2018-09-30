@@ -19,7 +19,6 @@ void Transform::setPos(glm::vec3 pos)
 
 void Transform::setRot(glm::vec3 rot)
 {
-	Console::print("Transform", "Rotatet");
 	this->rot = rot;
 	transformation_changed();
 }
