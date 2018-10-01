@@ -170,7 +170,7 @@
     <ClCompile Include="Component.cpp" />
     <ClCompile Include="ComponentStack.cpp" />
     <ClCompile Include="Console.cpp" />
-    <ClCompile Include="FlyCameraBehavior.cpp" />
+    <ClCompile Include="FlyingCameraBehavior.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="Image.cpp" />
     <ClCompile Include="Input.cpp" />
