@@ -22,7 +22,7 @@ public:
 	glm::vec3 getPos();
 	glm::vec3 getRot();
 	glm::vec3 getScale();
-private:
+protected:
 	glm::vec3 pos;
 	glm::mat4 matrix_pos;
 	glm::vec3 scale;

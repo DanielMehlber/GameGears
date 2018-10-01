@@ -31,6 +31,15 @@ public:
 	void setTarget(glm::vec3 target);
 	glm::vec3 foreward = glm::vec3(0,0,1);
 	glm::vec3 up = glm::vec3(0,1,0);
+	bool target_stay_focused = false;
+
+	//The inherited functions have to be overridden, because they don't move the camera the right way
+	void move(float x, float y, float z);
+	void rotate(float x, float y, float z);
+	void setPos(glm::vec3 v);
+	void setRot(glm::vec3 v);
+	void move_view(glm::vec3);
+
 private:
 	float fov, aspect_ratio, near, far;
 	Canvas* canvas;

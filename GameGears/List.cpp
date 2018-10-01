@@ -11,7 +11,7 @@ template<typename type>
 List<type>::List(type arr[], int size)
 {
 	for (int i = 0; i < size; i++) {
-		data.push_back(arr[i]);
+		first->append(arr[i]);
 	}
 }
 
@@ -26,14 +26,13 @@ List<type>::List(glm::vec3 vector)
 template<typename type>
 List<type>::~List()
 {
-	data.clear();
-	data.~vector();
+
 }
 
 template<typename type>
 void List<type>::append(type obj)
 {
-	data.push_back(obj);
+	first->append(obj);
 }
 
 template<typename type>
@@ -47,19 +46,35 @@ void List<type>::append_once(type obj)
 	append(obj);
 }
 
-template<typename type>
-void List<type>::append(List<type>* l)
-{
-	for (type obj : *l->getData()) {
-		append(obj);
-	}
-}
 
 template<typename type>
 void List<type>::remove_at(int index)
 {
-	data.erase(data.begin() + index);
-	data.shrink_to_fit();
+	if (index > size()-1 || first == nullptr) {
+		Console::err("LIST_OUT_OF_BOUNDS", "Cannot remove out of bounds");
+		return;
+	}
+
+	if (index == 0) {
+		first = nullptr;
+		return;
+	}
+
+	ListNode<type>* before = first->pull(index - 1);
+	ListNode<type>* node = before->pull(1);
+	
+	if (index + 1 == size()) {
+		before->child = nullptr;
+		node->~ListNode();
+		return;
+	}
+
+	ListNode<type>* after = node->pull(1);
+
+	before->child = after;
+	node->~ListNode();
+
+
 }
 
 template<typename type>
@@ -69,57 +84,59 @@ void List<type>::remove(type obj)
 }
 
 template<typename type>
-std::vector<type>* List<type>::getData()
+std::vector<type> List<type>::getData()
 {
-	return &data;
+	std::vector<type> v;
+	int size = first->getSizeFromHere(0);
+	for (int i = 0; i < size; i++)
+		v.push_back(get(i));
+	return v;
 }
 
 template<typename type>
 type List<type>::get(int index)
 {
-	return data[index];
+	ListNode<type>* node = first->pull(index);
+	if (!node)
+		return NULL;
+	return node->content;
 }
 
 template<typename type>
 void List<type>::set(int index, type obj)
 {
-	data[index] = obj;
+	ListNode<type>* node = first->pull(index);
+	if (!node)
+		return;
+	node->content = obj;
 }
 
 template<typename type>
 int List<type>::find(type obj)
 {
-	int index = 0;
-	for (type comp : data) {
-		if (obj == comp)
-			return index;
-		index += 1;
-	}
-	return -1;
+	return first->indexFromHere(obj, 0);
 }
 
 template<typename type>
 int List<type>::size()
 {
-	return data.size();
+	return first->getSizeFromHere(0);
 }
 
 template<typename type>
 type * List<type>::toArray()
 {
-	type* arr = new type[data.size()];
-	
-	int index = 0;
-	for (type obj : data) {
-		arr[index] = obj;
-		index++;
-	}
-
+	type* arr = new type[first->getSizeFromHere(0)];
+	for (int i = 0; i < size(); i++)
+		arr[i] = get(i);
 	return arr;
 }
 
 template<typename type>
 void List<type>::clear()
 {
-	data.clear();
+	for (int i = size()-1; i >= 0; i--) {
+		remove_at(i);
+	}
 }
+

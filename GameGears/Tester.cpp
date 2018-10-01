@@ -51,7 +51,7 @@ int main() {
 	for (int i = 0; i < 1; i++)
 		object->instance()->setRot(10 * i, 10 * i, 10 * i);
 
-	app.taskManager->register_task(game_object_behavior);
+	//app.taskManager->register_task(game_object_behavior);
 
 	Input* esc = new Input("escape", GLFW_KEY_SPACE, app.canvas);
 	esc->mode = Input::InputMode::IMPULS;

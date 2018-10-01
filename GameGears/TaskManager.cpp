@@ -38,7 +38,7 @@ void TaskManager::start()
 {
 	while(!terminate_all) {
 		while (paused == false && terminate_all == false) {
-			if (tasks.getData()->size() == 0)
+			if (tasks.getData().size() == 0)
 				//No Tasks -> The Manager will terminate itself
 				terminate();
 
@@ -48,8 +48,7 @@ void TaskManager::start()
 		}
 	}
 
-	for (SyncTask* task : *tasks.getData()) {
-		task->terminate();
+	for (SyncTask* task : tasks.getData()) {
 		unregister_task(task);
 	}
 
@@ -71,8 +70,8 @@ void TaskManager::start(enum TaskManager::THREADING_HINT hint) {
 
 SyncTask * TaskManager::getTask(std::string name)
 {
-	std::vector<SyncTask*>* data_vector = tasks.getData();
-	for (SyncTask* task : *data_vector) {
+	std::vector<SyncTask*> data_vector = tasks.getData();
+	for (SyncTask* task : data_vector) {
 
 		if (task->getName() == name) {
 			return task;
@@ -94,7 +93,7 @@ void TaskManager::terminate()
 
 void TaskManager::update()
 {
-	for (SyncTask* task : *tasks.getData()) {
+	for (SyncTask* task : tasks.getData()) {
 		int re = task->fire();
 		process_return(task, re);
 	}

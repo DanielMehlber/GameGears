@@ -23,7 +23,7 @@ bool Input::is_pressed(Canvas* window, int key)
 
 void Input::check()
 {
-	for (int k : *inputs.getData()) {
+	for (int k : inputs.getData()) {
 		bool pressed = glfwGetKey(canvas->window, k) == GLFW_PRESS;
 		if (mode == DEFAULT) {
 			if (pressed) {

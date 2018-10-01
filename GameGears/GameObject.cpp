@@ -18,7 +18,7 @@ void GameObject::render()
 	if (rendered)
 		return;
 
-	for (Instance* instance : *instances.getData()) {
+	for (Instance* instance : instances.getData()) {
 		instance->spawn();
 	}
 

@@ -87,3 +87,36 @@ void Camera::setTarget(glm::vec3 target)
 {
 	this->target = target;
 }
+
+void Camera::move(float x, float y, float z)
+{
+	setPos(glm::vec3(pos.x + x, pos.y + y, pos.z + z));
+	target += glm::vec3(x, y, z);
+}
+
+void Camera::rotate(float x, float y, float z)
+{
+	setRot(glm::vec3(rot.x + x, rot.y + y, rot.z + z));
+}
+
+void Camera::setPos(glm::vec3 v)
+{
+	Transform::pos += v;
+	if (!target_stay_focused) {
+		target += v;
+	}
+}
+
+void Camera::setRot(glm::vec3 v)
+{
+	if (target_stay_focused)
+		return;
+	Transform::rot = v;
+	
+}
+
+void Camera::move_view(glm::vec3)
+{
+	glm::vec3 delta = target - getPos();
+	foreward = glm::normalize(delta);
+}
