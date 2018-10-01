@@ -25,6 +25,9 @@
     <Filter Include="Header Files\components">
       <UniqueIdentifier>{1d5a41bc-e291-47a3-9f90-81998df7698d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\behaviors">
+      <UniqueIdentifier>{c2901242-dbbf-40cf-96d6-4bb2289bb57a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Renderable.h">
@@ -113,6 +116,9 @@
     </ClInclude>
     <ClInclude Include="Input.h">
       <Filter>Header Files\core</Filter>
+    </ClInclude>
+    <ClInclude Include="FlyingCameraBehavior.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -207,6 +213,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Input.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="FlyCameraBehavior.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

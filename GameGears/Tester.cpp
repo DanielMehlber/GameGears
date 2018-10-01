@@ -8,6 +8,9 @@
 #include "ObjectBehaviorExample.h"
 #include "Loader.h"
 #include "Input.h"
+#include "FlyingCameraBehavior.h"
+#include "BehaviorComponent.h"
+#include "Camera.h"
 
 
 int main() {
@@ -19,6 +22,9 @@ int main() {
 	Camera* cam = app.renderer->getCamera();
 	cam->setTarget(cam->getPos() + cam->foreward);
 	
+	FlyingCameraBehavior* camCntr = new FlyingCameraBehavior();
+	cam->set<BehaviorComponent<Camera>>(camCntr);
+	app.taskManager->register_task(camCntr);
 
 	Shader* vertexShader = Loader::loadShader(Shader::VERTEX_SHADER, "C:/Users/danie/Google Drive/Game Engine/GameGears/res/vertex.txt");
 	Shader* fragmentShader = Loader::loadShader(Shader::FRAGMENT_SHADER, "C:/Users/danie/Google Drive/Game Engine/GameGears/res/fragment.txt");

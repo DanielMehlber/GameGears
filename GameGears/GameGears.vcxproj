@@ -138,6 +138,7 @@
     <ClInclude Include="Component.h" />
     <ClInclude Include="ComponentStack.h" />
     <ClInclude Include="Console.h" />
+    <ClInclude Include="FlyingCameraBehavior.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="Image.h" />
     <ClInclude Include="Input.h" />
@@ -169,6 +170,7 @@
     <ClCompile Include="Component.cpp" />
     <ClCompile Include="ComponentStack.cpp" />
     <ClCompile Include="Console.cpp" />
+    <ClCompile Include="FlyCameraBehavior.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="Image.cpp" />
     <ClCompile Include="Input.cpp" />
