@@ -60,6 +60,7 @@ artifacts/
 *.pidb
 *.svclog
 *.scc
+*.exe
  # Chutzpah Test files
 _Chutzpah*
  # Visual C++ cache files
