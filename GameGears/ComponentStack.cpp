@@ -4,6 +4,7 @@
 
 ComponentStack::ComponentStack()
 {
+	components = List<Component*>();
 }
 
 

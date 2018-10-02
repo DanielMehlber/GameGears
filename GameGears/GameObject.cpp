@@ -6,6 +6,7 @@
 
 GameObject::GameObject(RenderComponent* context) : Renderable(context)
 {
+	instances = List<Instance*>();
 }
 
 

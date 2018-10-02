@@ -10,7 +10,6 @@ public:
 	void append(type obj);
 	ListNode<type>* pull(int times_left);
 	int getSizeFromHere(int size);
-	type find(type obj);
 	int indexFromHere(type obj, int index);
 };
 

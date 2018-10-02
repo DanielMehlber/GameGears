@@ -25,7 +25,7 @@ public:
 	void clear();
 
 private:
-	ListNode<type>* first;
+	ListNode<type>* first = nullptr;
 
 };
 

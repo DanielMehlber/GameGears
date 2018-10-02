@@ -15,6 +15,20 @@
 
 int main() {
 
+	List<std::string> strings = List<std::string>();
+	strings.append("0");
+	strings.append("1");
+	strings.append("2");
+	//3
+	std::cout << strings.size() << std::endl;
+	//0
+	std::cout << strings.find("0") << std::endl;
+	//"1"
+	std::cout << strings.get(1) << std::endl;
+	strings.remove_at(1);
+	//1
+	std::cout << strings.find("2") << std::endl;
+
 	List<GameObject*> ints = List<GameObject*>();
 	ints.size();
 

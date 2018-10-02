@@ -3,6 +3,7 @@
 
 RenderComponent::RenderComponent(Camera* cam)
 {
+	renderObjects = List<Renderable*>();
 	camera = cam;
 	glEnable(GL_DEPTH_TEST);
 }
