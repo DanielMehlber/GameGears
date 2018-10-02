@@ -15,23 +15,6 @@
 
 int main() {
 
-	List<std::string> strings = List<std::string>();
-	strings.append("0");
-	strings.append("1");
-	strings.append("2");
-	//3
-	std::cout << strings.size() << std::endl;
-	//0
-	std::cout << strings.find("0") << std::endl;
-	//"1"
-	std::cout << strings.get(1) << std::endl;
-	strings.remove_at(1);
-	//1
-	std::cout << strings.find("2") << std::endl;
-
-	List<GameObject*> ints = List<GameObject*>();
-	ints.size();
-
 	Application app = Application();
 	Camera* cam = app.renderer->getCamera();
 	cam->setTarget(cam->getPos() + cam->foreward);
@@ -65,7 +48,7 @@ int main() {
 	for (int i = 0; i < 1; i++)
 		object->instance()->setRot(10 * i, 10 * i, 10 * i);
 
-	//app.taskManager->register_task(game_object_behavior);
+	app.taskManager->register_task(game_object_behavior);
 
 	Input* esc = new Input("escape", GLFW_KEY_SPACE, app.canvas);
 	esc->mode = Input::InputMode::IMPULS;
