@@ -121,7 +121,7 @@
       <Filter>Header Files\behaviors</Filter>
     </ClInclude>
     <ClInclude Include="ListNode.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\data</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

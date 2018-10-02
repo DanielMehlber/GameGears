@@ -3,6 +3,7 @@
 #include "Console.h"
 #include "glm/vec3.hpp"
 #include "ListNode.h"
+#include "ListNode.cpp"
 
 template<typename type> class List
 {

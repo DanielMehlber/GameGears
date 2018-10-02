@@ -11,7 +11,7 @@ template<typename type>
 List<type>::List(type arr[], int size)
 {
 	for (int i = 0; i < size; i++) {
-		first->append(arr[i]);
+		append(arr[i]);
 	}
 }
 
@@ -32,6 +32,10 @@ List<type>::~List()
 template<typename type>
 void List<type>::append(type obj)
 {
+	if (first == nullptr) {
+		first = new ListNode<type>(obj);
+		return;
+	}
 	first->append(obj);
 }
 
@@ -86,6 +90,8 @@ void List<type>::remove(type obj)
 template<typename type>
 std::vector<type> List<type>::getData()
 {
+	if (first == nullptr)
+		return std::vector<type>();
 	std::vector<type> v;
 	int size = first->getSizeFromHere(0);
 	for (int i = 0; i < size; i++)
@@ -96,6 +102,10 @@ std::vector<type> List<type>::getData()
 template<typename type>
 type List<type>::get(int index)
 {
+	if (first == nullptr) {
+		Console::err("LIST_EMPTY", "Cannot pull an element out of an empty list.");
+		return NULL;
+	}
 	ListNode<type>* node = first->pull(index);
 	if (!node)
 		return NULL;
@@ -105,6 +115,10 @@ type List<type>::get(int index)
 template<typename type>
 void List<type>::set(int index, type obj)
 {
+	if (first == nullptr) {
+		Console::err("LIST_EMPTY", "Cannot set an element inside an empty list");
+		return;
+	}
 	ListNode<type>* node = first->pull(index);
 	if (!node)
 		return;
@@ -114,18 +128,24 @@ void List<type>::set(int index, type obj)
 template<typename type>
 int List<type>::find(type obj)
 {
+	if (first == nullptr)
+		return -1;
 	return first->indexFromHere(obj, 0);
 }
 
 template<typename type>
 int List<type>::size()
 {
+	if (first == nullptr)
+		return 0;
 	return first->getSizeFromHere(0);
 }
 
 template<typename type>
 type * List<type>::toArray()
 {
+	if (first == nullptr)
+		return new type[0];
 	type* arr = new type[first->getSizeFromHere(0)];
 	for (int i = 0; i < size(); i++)
 		arr[i] = get(i);
@@ -135,6 +155,8 @@ type * List<type>::toArray()
 template<typename type>
 void List<type>::clear()
 {
+	if (first == nullptr)
+		return;
 	for (int i = size()-1; i >= 0; i--) {
 		remove_at(i);
 	}
