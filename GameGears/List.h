@@ -2,6 +2,8 @@
 #include <vector>
 #include "Console.h"
 #include "glm/vec3.hpp"
+#include "ListNode.h"
+#include "ListNode.cpp"
 
 template<typename type> class List
 {
@@ -12,10 +14,9 @@ public:
 	~List();
 	void append(type obj);
 	void append_once(type obj);
-	void append(List<type>* l);
 	void remove_at(int index);
 	void remove(type obj);
-	std::vector<type>* getData();
+	std::vector<type> getData();
 	type get(int index);
 	void set(int index, type obj);
 	int find(type obj);
@@ -24,7 +25,7 @@ public:
 	void clear();
 
 private:
-	std::vector<type> data;
+	ListNode<type>* first = nullptr;
 
 };
 

@@ -54,7 +54,7 @@ inline type * ComponentStack::getComponent()
 template<class type>
 inline Component * ComponentStack::getComponentObject()
 {
-	for (Component* comp : *components.getData()) {
+	for (Component* comp : components.getData()) {
 		if (dynamic_cast<type*>(comp)) {
 			return comp;
 		}

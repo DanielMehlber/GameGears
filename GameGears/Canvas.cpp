@@ -69,7 +69,7 @@ void Canvas::close()
 	glfwTerminate();
 
 	//Execute all additional Close Operations
-	for (std::function<void()>* co : *close_operations.getData()) {
+	for (std::function<void()>* co : close_operations.getData()) {
 		std::cout << "close operation found" << std::endl;
 		(*co)();
 	}

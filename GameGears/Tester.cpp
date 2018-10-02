@@ -15,9 +15,6 @@
 
 int main() {
 
-	List<GameObject*> ints = List<GameObject*>();
-	ints.size();
-
 	Application app = Application();
 	Camera* cam = app.renderer->getCamera();
 	cam->setTarget(cam->getPos() + cam->foreward);

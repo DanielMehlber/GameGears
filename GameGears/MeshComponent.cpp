@@ -70,7 +70,7 @@ void MeshComponent::pack(Renderable::usage hint)
 	//Convert the Vertex Array format to the Buffer Array format
 	v_positions.clear();
 	v_tex_coords.clear();
-	for (Vertex* vertex : *vertices.getData()) {
+	for (Vertex* vertex : vertices.getData()) {
 		//Positions from vec3 to Array
 		v_positions.append(vertex->pos.x);
 		v_positions.append(vertex->pos.y);
