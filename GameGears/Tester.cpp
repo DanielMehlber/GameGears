@@ -15,47 +15,48 @@
 
 int main() {
 
-	Application app = Application();
-	Camera* cam = app.renderer->getCamera();
+	Application* app = new Application();
+	Camera* cam = app->renderer->getCamera();
 	cam->setTarget(cam->getPos() + cam->foreward);
 	
 	FlyingCameraBehavior* camCntr = new FlyingCameraBehavior();
 	cam->set<BehaviorComponent<Camera>>(camCntr);
-	app.taskManager->register_task(camCntr);
+	app->taskManager->register_task(camCntr);
 
-	Shader* vertexShader = Loader::loadShader(Shader::VERTEX_SHADER, "C:/Users/danie/Google Drive/Game Engine/GameGears/res/vertex.txt");
-	Shader* fragmentShader = Loader::loadShader(Shader::FRAGMENT_SHADER, "C:/Users/danie/Google Drive/Game Engine/GameGears/res/fragment.txt");
+	Shader* vertexShader = Loader::loadShader("C:/Users/danie/Google Drive/Game Engine/GameGears/res/vertex.txt", Shader::VERTEX_SHADER);
+	Shader* fragmentShader = Loader::loadShader("C:/Users/danie/Google Drive/Game Engine/GameGears/res/fragment.txt", Shader::FRAGMENT_SHADER);
 	
 	ShaderComponent* shaderCmp = new ShaderComponent(vertexShader, fragmentShader);
 	shaderCmp->pack();
 
 	Texture* tex = new Texture(Loader::loadImage("C:/Users/danie/Google Drive/CG Textures/Ground/BrokenGround.jpg"));
 
-	TexturePack* textureCmp = new TexturePack();
+	TextureComponent* textureCmp = new TextureComponent();
 	textureCmp->setDiffuse(tex);
 
-	MeshComponent* mesh = new MeshComponent(app.renderer);
+	MeshComponent* mesh = new MeshComponent(app->renderer);
 	mesh->pack();
 
-	GameObject* object = new GameObject(app.renderer);
+	GameObject* object = new GameObject(app->renderer);
 
 	ObjectBehaviorExample* game_object_behavior = new ObjectBehaviorExample();
 
 	object->set<MeshComponent>(mesh);
-	object->set<TexturePack>(textureCmp);
+	object->set<TextureComponent>(textureCmp);
 	object->set<ShaderComponent>(shaderCmp);
 	object->set<BehaviorComponent<GameObject>>(game_object_behavior);
 	for (int i = 0; i < 1; i++)
 		object->instance()->setRot(10 * i, 10 * i, 10 * i);
 
-	app.taskManager->register_task(game_object_behavior);
+	app->taskManager->register_task(game_object_behavior);
 
-	Input* esc = new Input("escape", GLFW_KEY_SPACE, app.canvas);
+	Input* esc = new Input("escape", GLFW_KEY_ESCAPE, app->canvas);
 	esc->mode = Input::InputMode::IMPULS;
-	app.taskManager->register_task(esc);
+	esc->call = [=](Canvas* canvas) {app->close(); Console::print("CLOSING", "Close Operation"); };
+	app->taskManager->register_task(esc);
 
-	app.renderer->register_object(object);
-	app.start();
+	app->renderer->register_object(object);
+	app->start();
 	
 }
 

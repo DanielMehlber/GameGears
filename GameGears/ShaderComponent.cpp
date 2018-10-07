@@ -138,8 +138,8 @@ ShaderComponent * ShaderComponent::genDefaultShader()
 	const char* default_vertex_loc = "./res/default_vs.txt";
 	const char* default_fragment_loc = "./res/default_fs.txt";
 
-	Shader* default_vertex_shader = Loader::loadShader(Shader::VERTEX_SHADER, default_vertex_loc);
-	Shader* default_fragment_shader = Loader::loadShader(Shader::FRAGMENT_SHADER, default_fragment_loc);
+	Shader* default_vertex_shader = Loader::loadShader(default_vertex_loc, Shader::VERTEX_SHADER);
+	Shader* default_fragment_shader = Loader::loadShader(default_fragment_loc, Shader::FRAGMENT_SHADER);
 
 	ShaderComponent* defaultShader = new ShaderComponent(default_vertex_shader, default_fragment_shader);
 	return defaultShader;

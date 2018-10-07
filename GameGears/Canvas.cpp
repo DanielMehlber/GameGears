@@ -83,13 +83,13 @@ void Canvas::on_resize(GLFWwindow * window, int width, int height)
 	glViewport(0, 0, width, height);
 }
 
-float Canvas::getWidth()
+int Canvas::getWidth()
 {
 	glfwGetWindowSize(window, &width, &height);
 	return width;
 }
 
-float Canvas::getHeight()
+int Canvas::getHeight()
 {
 	glfwGetWindowSize(window, &width, &height);
 	return height;

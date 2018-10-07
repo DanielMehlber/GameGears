@@ -16,7 +16,7 @@ MeshComponent* Loader::loadMesh(const char * location)
 	return nullptr;
 }
 
-Shader* Loader::loadShader(Shader::TYPES type, const char* location)
+Shader* Loader::loadShader(const char* location, Shader::TYPES type)
 {
 	return new Shader(loadFile(location).c_str(), type);
 }

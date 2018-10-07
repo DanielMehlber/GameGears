@@ -6,7 +6,7 @@ class Input : public SyncTask
 {
 public:
 
-	static enum InputMode {
+	enum InputMode {
 		DEFAULT,
 		IMPULS,
 		INVERT

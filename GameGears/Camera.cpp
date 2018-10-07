@@ -1,6 +1,6 @@
 #include "Camera.h"
 
-Camera::Camera(Canvas * canvas) : Camera(canvas, 60, 0.01, 1000)
+Camera::Camera(Canvas * canvas) : Camera(canvas, 60, 0.01f, 1000)
 {
 }
 

@@ -32,14 +32,14 @@ struct Loadable {
 
 struct GameObject : Gear, Loadable {
 	Mesh* mesh;
-	TexturePack* texures;
+	TextureComponent* texures;
 };
 
 struct Mesh : Gear, Loadable {
 
 };
 
-struct TexturePack : Gear {
+struct TextureComponent : Gear {
 	Texture* diffuse;
 	Texture* normal;
 	Texture* specular;

@@ -25,8 +25,8 @@ public:
 	SyncTask* update_task;
 	List<std::function<void()>*> close_operations;
 	std::function<int(SyncTask* task)> update_func;
-	float getWidth();
-	float getHeight();
+	int getWidth();
+	int getHeight();
 	float getAspectRatio();
 
 private:
