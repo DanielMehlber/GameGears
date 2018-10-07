@@ -2,32 +2,32 @@
 
 
 
-TextureComponent::TextureComponent() : Component(Component::tags::RENDER_RELEVANT)
+TexturePack::TexturePack() : Component(Component::tags::RENDER_RELEVANT)
 {
 }
 
 
-TextureComponent::~TextureComponent()
+TexturePack::~TexturePack()
 {
 	diffuse->~Texture();
 }
 
-void TextureComponent::setDiffuse(Texture * diff)
+void TexturePack::setDiffuse(Texture * diff)
 {
-	TextureComponent::diffuse = diff;
+	TexturePack::diffuse = diff;
 }
 
-Texture * TextureComponent::getDiffuse()
+Texture * TexturePack::getDiffuse()
 {
 	return diffuse;
 }
 
-void TextureComponent::activate()
+void TexturePack::activate()
 {
 	diffuse->activate(0);
 }
 
-void TextureComponent::deactivate()
+void TexturePack::deactivate()
 {
 	diffuse->deactivate();
 }

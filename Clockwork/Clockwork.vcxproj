@@ -20,19 +20,19 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
-    <ProjectGuid>{D8DA252F-8FF5-4BA0-803D-F0C9AC0899B0}</ProjectGuid>
-    <RootNamespace>Crypt</RootNamespace>
+    <ProjectGuid>{DEFD8888-4812-4E11-9A56-F783F4789852}</ProjectGuid>
+    <RootNamespace>Clockwork</RootNamespace>
     <WindowsTargetPlatformVersion>10.0.17134.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v141</PlatformToolset>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v141</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
@@ -70,10 +70,10 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <OutDir>$(SolutionDir)built</OutDir>
+    <OutDir>$(SolutionDir)\lib\$(Configuration)\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <OutDir>$(SolutionDir)built</OutDir>
+    <OutDir>$(SolutionDir)\lib\$(Configuration)\</OutDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -120,12 +120,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="CryptObject.h" />
-    <ClInclude Include="SkeletonFile.h" />
+    <ClInclude Include="Blueprint.h" />
+    <ClInclude Include="GearCompiler.h" />
+    <ClInclude Include="GearFile.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="CryptObject.cpp" />
-    <ClCompile Include="SkeletonFile.cpp" />
+    <ClCompile Include="Blueprint.cpp" />
+    <ClCompile Include="GearCompiler.cpp" />
+    <ClCompile Include="GearFile.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

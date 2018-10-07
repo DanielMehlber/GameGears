@@ -31,7 +31,7 @@ int main() {
 
 	Texture* tex = new Texture(Loader::loadImage("C:/Users/danie/Google Drive/CG Textures/Ground/BrokenGround.jpg"));
 
-	TextureComponent* textureCmp = new TextureComponent();
+	TexturePack* textureCmp = new TexturePack();
 	textureCmp->setDiffuse(tex);
 
 	MeshComponent* mesh = new MeshComponent(app.renderer);
@@ -42,7 +42,7 @@ int main() {
 	ObjectBehaviorExample* game_object_behavior = new ObjectBehaviorExample();
 
 	object->set<MeshComponent>(mesh);
-	object->set<TextureComponent>(textureCmp);
+	object->set<TexturePack>(textureCmp);
 	object->set<ShaderComponent>(shaderCmp);
 	object->set<BehaviorComponent<GameObject>>(game_object_behavior);
 	for (int i = 0; i < 1; i++)

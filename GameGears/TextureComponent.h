@@ -1,11 +1,11 @@
 #pragma once
 #include "Texture.h"
 #include "Component.h"
-class TextureComponent : public Component
+class TexturePack : public Component
 {
 public:
-	TextureComponent();
-	~TextureComponent();
+	TexturePack();
+	~TexturePack();
 	void setDiffuse(Texture* diff);
 	Texture* getDiffuse();
 
