@@ -17,9 +17,11 @@ struct Tag {
 	const char* arg;
 };
 
-struct Gear {
+struct BlueprintObject {
+	Tag tag;
 	const char* name;
 };
+
 
 struct Transformable {
 	float x, y, z, rx, ry, rz, sx, sy, sz;
@@ -30,36 +32,37 @@ struct Loadable {
 	bool valid;
 };
 
-struct GameObject : Gear, Loadable {
+struct GameObject : BlueprintObject, Loadable {
+	GameObject* parent;
 	Mesh* mesh;
 	TextureComponent* texures;
 };
 
-struct Mesh : Gear, Loadable {
+struct Mesh : BlueprintObject, Loadable {
 
 };
 
-struct TextureComponent : Gear {
+struct TextureComponent : BlueprintObject {
 	Texture* diffuse;
 	Texture* normal;
 	Texture* specular;
 	Texture* emission;
 };
 
-struct Texture : Gear, Loadable {
+struct Texture : BlueprintObject, Loadable {
 
 };
 
-struct ShaderPack : Gear {
+struct ShaderPack : BlueprintObject {
 	Shader* vertex;
 	Shader* fragment;
 	Shader* geometry;
 };
 
-struct Shader : Gear, Loadable {
+struct Shader : BlueprintObject, Loadable {
 	ShaderType type;
 };
 
-struct Instance : Gear, Transformable {
+struct Instance : BlueprintObject, Transformable {
 	GameObject* reference;
 };

@@ -21,7 +21,22 @@
     <ClInclude Include="Blueprint.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
-    <ClInclude Include="GearFile.h">
+    <ClInclude Include="..\GameGears\BlueprintObjects.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="File.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="GearObjects.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="GearListNode.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="GearList.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="GearOut.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
   </ItemGroup>
@@ -32,7 +47,16 @@
     <ClCompile Include="Blueprint.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
-    <ClCompile Include="GearFile.cpp">
+    <ClCompile Include="File.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="GearListNode.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="GearList.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="GearOut.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
   </ItemGroup>

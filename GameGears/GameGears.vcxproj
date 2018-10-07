@@ -151,7 +151,6 @@
     <ClInclude Include="Console.h" />
     <ClInclude Include="FlyingCameraBehavior.h" />
     <ClInclude Include="GameObject.h" />
-    <ClInclude Include="GearObjects.h" />
     <ClInclude Include="Image.h" />
     <ClInclude Include="Input.h" />
     <ClInclude Include="Instance.h" />

@@ -87,6 +87,7 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>C:\Users\danie\source\repos\GameGears\deps\include\serialization;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -95,6 +96,7 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>C:\Users\danie\source\repos\GameGears\deps\include\serialization;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -105,6 +107,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>C:\Users\danie\source\repos\GameGears\deps\include\serialization;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
@@ -119,6 +122,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>C:\Users\danie\source\repos\GameGears\deps\include\serialization;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
@@ -126,14 +130,22 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="..\GameGears\BlueprintObjects.h" />
     <ClInclude Include="Blueprint.h" />
+    <ClInclude Include="File.h" />
     <ClInclude Include="GearCompiler.h" />
-    <ClInclude Include="GearFile.h" />
+    <ClInclude Include="GearObjects.h" />
+    <ClInclude Include="GearList.h" />
+    <ClInclude Include="GearListNode.h" />
+    <ClInclude Include="GearOut.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Blueprint.cpp" />
+    <ClCompile Include="File.cpp" />
     <ClCompile Include="GearCompiler.cpp" />
-    <ClCompile Include="GearFile.cpp" />
+    <ClCompile Include="GearList.cpp" />
+    <ClCompile Include="GearListNode.cpp" />
+    <ClCompile Include="GearOut.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

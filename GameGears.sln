@@ -11,6 +11,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Testing", "Testing\Testing.
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GameGears", "GameGears\GameGears.vcxproj", "{6D228587-C331-4CF8-944D-56E226948DAB}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "BlueprintCompilerBinary", "BlueprintCompilerBinary\BlueprintCompilerBinary.vcxproj", "{5A6AE81C-4C14-430B-9ECE-CA8185C61278}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -51,6 +53,14 @@ Global
 		{6D228587-C331-4CF8-944D-56E226948DAB}.Release|x64.Build.0 = Release|x64
 		{6D228587-C331-4CF8-944D-56E226948DAB}.Release|x86.ActiveCfg = Release|Win32
 		{6D228587-C331-4CF8-944D-56E226948DAB}.Release|x86.Build.0 = Release|Win32
+		{5A6AE81C-4C14-430B-9ECE-CA8185C61278}.Debug|x64.ActiveCfg = Debug|x64
+		{5A6AE81C-4C14-430B-9ECE-CA8185C61278}.Debug|x64.Build.0 = Debug|x64
+		{5A6AE81C-4C14-430B-9ECE-CA8185C61278}.Debug|x86.ActiveCfg = Debug|Win32
+		{5A6AE81C-4C14-430B-9ECE-CA8185C61278}.Debug|x86.Build.0 = Debug|Win32
+		{5A6AE81C-4C14-430B-9ECE-CA8185C61278}.Release|x64.ActiveCfg = Release|x64
+		{5A6AE81C-4C14-430B-9ECE-CA8185C61278}.Release|x64.Build.0 = Release|x64
+		{5A6AE81C-4C14-430B-9ECE-CA8185C61278}.Release|x86.ActiveCfg = Release|Win32
+		{5A6AE81C-4C14-430B-9ECE-CA8185C61278}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

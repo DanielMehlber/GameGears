@@ -45,6 +45,7 @@ int main() {
 	object->set<TextureComponent>(textureCmp);
 	object->set<ShaderComponent>(shaderCmp);
 	object->set<BehaviorComponent<GameObject>>(game_object_behavior);
+
 	for (int i = 0; i < 1; i++)
 		object->instance()->setRot(10 * i, 10 * i, 10 * i);
 
