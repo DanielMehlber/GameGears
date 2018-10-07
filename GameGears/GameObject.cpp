@@ -40,7 +40,7 @@ void GameObject::activate()
 
 	MeshComponent* meshCmp = getComponent<MeshComponent>();
 	ShaderComponent* shaderCmp = getComponent<ShaderComponent>();
-	TextureComponent* textureCmp = getComponent<TextureComponent>();
+	TexturePack* textureCmp = getComponent<TexturePack>();
 
  
 	if (meshCmp == nullptr)
@@ -64,7 +64,7 @@ void GameObject::deactivate()
 {
 	getComponent<MeshComponent>()->deactivate();
 	getComponent<ShaderComponent>()->deactivate();
-	getComponent<TextureComponent>()->deactivate();
+	getComponent<TexturePack>()->deactivate();
 
 	active = false;
 }
