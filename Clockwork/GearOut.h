@@ -1,10 +1,11 @@
 #pragma once
 #include <string>
+#include <iostream>
 class GearOut
 {
 public:
 	GearOut();
 	~GearOut();
-	void err(int line, std::string err);
+	static void err(int line, std::string err);
 };
 

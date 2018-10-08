@@ -4,13 +4,15 @@
 #include <fstream>
 #include <sstream>
 #include "GearObjects.h"
+#include "GearOut.h"
 
 class GearCompiler
 {
 public:
+
 	GearCompiler(std::string source);
 	~GearCompiler();
-	void compile(std::string dest);
+	int compile(std::string dest);
 private:
 	std::string sk;
 	GearFile current;

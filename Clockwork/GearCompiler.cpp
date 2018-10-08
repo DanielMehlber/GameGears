@@ -38,11 +38,14 @@ enum Tag {CREATE, PULL, EDIT};
 
 struct Context {
 	Linetype linetype;
-	Tag super_tag;
+	Tag global_tag;
 	Tag local_tag;
+	std::string local_tag_attrib;
+	std::string global_tag_attrib;
 };
 
-void GearCompiler::compile(std::string dest)
+
+int GearCompiler::compile(std::string dest)
 {
 	std::ofstream out(dest);
 
@@ -62,8 +65,40 @@ void GearCompiler::compile(std::string dest)
 			if (startsWith(line, "@")) {
 				//which one?
 				std::vector<std::string> elems = split(line, ' ');
-				if (elems.size() != 2) {
-					std::string err = std::string("Error")
+				if (startsWith(elems[0], "@create")) {
+					context.local_tag = Tag::CREATE;
+				}
+				else if (startsWith(elems[0], "@pull")) {
+					context.local_tag = Tag::PULL;
+					if (elems.size() != 2) {
+						GearOut::err(_line, "local tag argument count. Missing or too many args.");
+						return -1;
+					}
+					context.local_tag_attrib = elems[1];
+				}
+				else if (startsWith(elems[1], "@edit")) {
+					context.local_tag = Tag::EDIT;
+				}
+				else {
+					GearOut::err(_line, "Unkown Local Tag");
+					return -1;
+				}
+
+			}
+			//is global tag
+			else if (startsWith(line, "$")) {
+				//which one?
+				std::vector<std::string> elems = split(line, ' ');
+				if (startsWith(elems[0], "$create")) {
+					context.global_tag = Tag::CREATE;
+				}
+				else if (startsWith(elems[0], "$pull")) {
+					context.global_tag = Tag::PULL;
+					if (elems.size() != 2) {
+						GearOut::err(_line, "global tag argument count. Missing or too many args");
+						return -1;
+					}
+					context.global_tag_attrib = elems[1];
 				}
 			}
 		}
